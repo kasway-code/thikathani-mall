@@ -9,6 +9,7 @@
                     <field name="descripcion_origen"/>
                     <field name="descripcion_beneficios"/>
                     <field name="descripcion_usos"/>
+                    <field name="brand"/>
                 </field>
             </field>
         </record>
