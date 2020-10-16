@@ -7,7 +7,6 @@ class ProductTemplate(models.Model):
     descripcion_origen = fields.Text('Descripción y Origen')
     descripcion_beneficios = fields.Text('Beneficios')
     descripcion_usos = fields.Text('Modos de uso')
-    brand = fields.Char('Marca')
     
 #     _name = 'product_ilo.product_ilo'
 #     _description = 'product_ilo.product_ilo'
