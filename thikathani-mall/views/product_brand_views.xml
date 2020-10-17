@@ -10,7 +10,7 @@
         </field>
     </record>
 
-    <record id="studio_customization.inventory_marcas_fd7fe4fc-c291-4dab-b1e1-096bdd149b1e" model="ir.ui.menu">
+    <record id="product_brand_menu_item" model="ir.ui.menu">
         <field name="action" ref="product_brand_view_tree"/>
         <field name="active" eval="True"/>
         <field name="groups_id" eval="[(6, 0, [])]"/>
