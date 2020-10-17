@@ -1,5 +1,5 @@
 <odoo>
-    <record id="view_product_brand__tree" model="ir.ui.view">
+    <record id="view_product_brand_tree" model="ir.ui.view">
         <field name="name">product.brand.tree</field>
         <field name="model">product.brand</field>
         <field name="arch" type="xml">
@@ -12,7 +12,7 @@
 
 
     <menuitem id="menu_item_product_brand" name="Marca"
-        parent="stock.menu_product_in_config_stock"/>
+        parent="stock.menu_product_in_config_stock" sequence="False"/>
 <!--
 
  <record id="product_brand_menu_item" model="ir.ui.menu">
