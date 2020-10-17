@@ -1,7 +1,7 @@
 <odoo>
     <data>
         <record id="product_type_id" model="ir.ui.view">
-            <field name="name">Nombre de la marca</field>
+            <field name="name">Nombre del tipo</field>
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_form_view" />
             <field name="arch" type="xml">
@@ -30,9 +30,7 @@
                             </h1>
                             <div name="options_active" />
                         </div>
-                        <group>
-                            <field name="product_count"/>
-                        </group>
+                        <!-- 
                         <notebook>
                             <page string="Productos">
                                 <field name="product_ids" widget="many2many" options="{'not_delete': True}">
@@ -57,6 +55,7 @@
                                 </field>
                             </page>
                         </notebook>
+                        -->
                     </sheet>
                 </form>
             </field>
@@ -73,6 +72,6 @@
             </field>
         </record>
 
-        <menuitem id="product_type_inventory" name="Tipos de producto" action="product_type_action" parent="stock.menu_stock_inventory_control" sequence="3" />
+        <menuitem id="product_type_inventory" name="Tipos de producto" action="product_type_action" parent="stock.menu_stock_inventory_control" sequence="4" />
     </data>
 </odoo>
