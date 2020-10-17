@@ -19,6 +19,7 @@ class BrandProduct(models.Model):
     brand_image = fields.Binary()
     member_ids = fields.One2many('product.template', 'brand_id')
     product_count = fields.Char(String="Cantidad")
+    product_count2 = fields.Char(String="Cantidad")
     '''
     product_count = fields.Char(String="Cantidad", compute='get_count_products', store=True)
 
