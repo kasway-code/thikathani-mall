@@ -10,10 +10,29 @@
         </field>
     </record>
 
-
-    <menuitem id="menu_item_product_brand" name="Marca"
-        parent="stock.menu_product_in_config_stock" sequence="False"/>
+    
+    <record id="action_tree_product_brand" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="name">Marca</field>
+        <field name="res_model">product.brand</field>
+        <field name="view_mode">tree</field>
+        <field name="view_type">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">\{}</field>
+    </record>
+    
+    
+    <record id="menu_action_tree_product_brand" model="ir.ui.menu" >
+        <field name="name">Marca</field>
+        <field name="sequence" eval="10" />
+        <field name="action" ref="action_tree_product_brand" />
+        <field name="parent_id" ref="stock.menu_product_in_config_stock" />
+    </record>
+    
 <!--
+    <menuitem id="menu_item_product_brand" name="Marca"
+        parent="stock.menu_product_in_config_stock"/>
+
 
  <record id="product_brand_menu_item" model="ir.ui.menu">
         <field name="action" ref="product_brand_view_tree" />
