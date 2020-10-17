@@ -1,20 +1,25 @@
 <odoo>
-    <data>
-        <record id="view_product_brand" model="ir.ui.view">
-            <field name="active" eval="True" />
-            <field name="arch" type="xml">
-                <data>
-                    <field name="code" />
-                </data>
-            </field>
-            <field name="field_parent" eval="False" />
-            <field name="groups_id" eval="[(6, 0, [])]" />
-            <field name="key" eval="False" />
-            <field name="mode">extension</field>
-            <field name="model">product.brand</field>
-            <field name="name">Odoo Studio: Default list view for x_marcas customization</field>
-            <field name="priority">99</field>
-            <field name="type">tree</field>
-        </record>
-    </data>
+    <record id="view_product_brand_form" model="ir.ui.view">
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="placeholder">Nombre de la marca</attribute>
+                    <attribute name="string">Nombre</attribute>
+                </xpath>
+                <xpath expr="//group[@name='studio_group_127424_left']" position="inside">
+                    <field name="code" force_save="True" attrs="{}" readonly="1" string="Código" placeholder="Código de la marca" />
+                </xpath>
+            </data>
+        </field>
+        <field name="field_parent" eval="False" />
+        <field name="groups_id" eval="[(6, 0, [])]" />
+        <field name="inherit_id" ref="studio_customization.default_form_view_fo_7ab80546-bab7-4cb6-b521-3c85cf1e61b1" />
+        <field name="key" eval="False" />
+        <field name="mode">extension</field>
+        <field name="model">product_brand</field>
+        <field name="name">Odoo Studio: Default form view for x_marcas customization</field>
+        <field name="priority">99</field>
+        <field name="type">form</field>
+    </record>
 </odoo>
