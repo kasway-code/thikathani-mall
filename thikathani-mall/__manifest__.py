@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Modulo Ilo",
+    'name': "ThikaThani",
 
     'summary': """
         Agrega campos personalizados a los productos.""",
@@ -24,8 +24,7 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/product_template_views.xml',
-        'views/templates.xml',
+        'views/',
     ],
     # only loaded in demonstration mode
     'demo': [
