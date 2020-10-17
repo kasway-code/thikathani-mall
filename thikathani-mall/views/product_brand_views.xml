@@ -1,7 +1,7 @@
 <odoo>
     <data>
         <record id="product_brand_id" model="ir.ui.view">
-            <field name="name">Brand Name</field>
+            <field name="name">Nombre de la marca</field>
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_form_view" />
             <field name="arch" type="xml">
@@ -12,19 +12,19 @@
         </record>
 
         <record id="product_brand_action" model="ir.actions.act_window">
-            <field name="name">Product Brand</field>
+            <field name="name">Marca de producto</field>
             <field name="res_model">product.brand</field>
             <field name="view_mode">tree,form</field>
         </record>
         <record id="product_brand_view" model="ir.ui.view">
-            <field name="name">Product Brand</field>
+            <field name="name">Marca de producto</field>
             <field name="model">product.brand</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
                         <field name="brand_image" widget="image" class="oe_avatar" />
                         <div class="oe_title">
-                            <label for="name" class="oe_edit_only" string="Brand Name" />
+                            <label for="name" class="oe_edit_only" string="Marca" />
                             <h1>
                                 <field name="name" />
                             </h1>
@@ -36,7 +36,7 @@
 
 
                         <notebook>
-                            <page string="Products">
+                            <page string="Productos">
                                 <field name="member_ids" widget="many2many" options="{'not_delete': True}">
                                     <kanban quick_create="false" create="true" delete="true">
                                         <field name="id" />
@@ -75,7 +75,7 @@
             </field>
         </record>
 
-        <menuitem id="product_brand_inventory" name="Product Brands" action="product_brand_action" parent="stock.menu_stock_inventory_control" sequence="2" />
+        <menuitem id="product_brand_inventory" name="Marcas de producto" action="product_brand_action" parent="stock.menu_stock_inventory_control" sequence="2" />
     </data>
 
     <!--
