@@ -4,7 +4,7 @@
         <field name="model">product.brand</field>
         <field name="arch" type="xml">
             <tree string="Marca">
-                <field name="code" widget="handle" />
+                <field name="code"/>
                 <field name="name" />
             </tree>
         </field>
