@@ -30,12 +30,9 @@
                             </h1>
                             <div name="options_active" />
                         </div>
-                        <!-- 
                         <group>
                             <field name="product_count" style="width:40px;" />
                         </group>
--->
-
                         <notebook>
                             <page string="Productos">
                                 <field name="member_ids" widget="many2many" options="{'not_delete': True}">
