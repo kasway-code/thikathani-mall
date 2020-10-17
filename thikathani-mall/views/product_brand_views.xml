@@ -32,7 +32,6 @@
                         </div>
                         <group>
                             <field name="product_count"/>
-                            <field name="product_count2"/>
                         </group>
                         <notebook>
                             <page string="Productos">
