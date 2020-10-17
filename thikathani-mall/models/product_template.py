@@ -8,6 +8,7 @@ class ProductTemplate(models.Model):
     descripcion_beneficios = fields.Text('Beneficios')
     descripcion_usos = fields.Text('Modos de uso')
     
+    brand_id = fields.Many2one('product.brand',string='Marca')
 #     _name = 'product_ilo.product_ilo'
 #     _description = 'product_ilo.product_ilo'
 
