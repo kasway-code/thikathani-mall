@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Modulo Ilo",
+    'name': "ThikaThani",
 
     'summary': """
         Agrega campos personalizados a los productos.""",
