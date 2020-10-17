@@ -31,7 +31,7 @@
                             <div name="options_active" />
                         </div>
                         <group>
-                            <field name="product_count" style="width:40px;" />
+                            <field name="product_count"/>
                         </group>
                         <notebook>
                             <page string="Productos">
