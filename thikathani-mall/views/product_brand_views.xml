@@ -7,9 +7,9 @@
                     <attribute name="placeholder">Nombre de la marca</attribute>
                     <attribute name="string">Nombre</attribute>
                 </xpath>
-                <xpath expr="//group[@name='studio_group_127424_left']" position="inside">
+                <group>
                     <field name="code" force_save="True" attrs="{}" readonly="1" string="Código" placeholder="Código de la marca" />
-                </xpath>
+                </group>
             </data>
         </field>
         <field name="field_parent" eval="False" />
