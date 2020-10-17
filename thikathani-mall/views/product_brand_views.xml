@@ -9,4 +9,14 @@
             </tree>
         </field>
     </record>
+
+    <record id="studio_customization.inventory_marcas_fd7fe4fc-c291-4dab-b1e1-096bdd149b1e" model="ir.ui.menu" context="{'studio': True}">
+        <field name="action" ref="product_brand_view_tree"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Marcas</field>
+        <field name="parent_id" ref="stock.menu_product_in_config_stock"/>
+        <field name="sequence" eval="False"/>
+        <field name="web_icon" eval="False"/>
+      </record>
 </odoo>
