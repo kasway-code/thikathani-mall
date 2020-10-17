@@ -24,6 +24,7 @@
 
     'data': [
         'views/product_brand_views.xml',
+        'views/product_type_views.xml',
         'views/product_template_views.xml',
         'security/ir.model.access.csv',
     ],

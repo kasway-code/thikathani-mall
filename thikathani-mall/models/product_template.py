@@ -9,15 +9,11 @@ class ProductTemplate(models.Model):
     descripcion_usos = fields.Text('Modos de uso')
     
     brand_id = fields.Many2one('product.brand',string='Marca')
-#     _name = 'product_ilo.product_ilo'
-#     _description = 'product_ilo.product_ilo'
+    sku = fields.Char(
+        string='SKU',
+    )
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+    @api.depends('products_ids')
+    def get_sku(self):
+        self.sku = brand_id + "test"
+    
