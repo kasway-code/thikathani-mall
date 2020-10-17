@@ -1,8 +1,9 @@
 <odoo>
-    <record id="view_product_brand_form" model="ir.ui.view">
-        <field name="active" eval="True" />
+    <record id="product_brand_view_tree" model="ir.ui.view">
+        <field name="name">product.brand.tree</field>
+        <field name="model">product.brand</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree string="Marca">
                 <field name="code" widget="handle" />
                 <field name="name" />
             </tree>
