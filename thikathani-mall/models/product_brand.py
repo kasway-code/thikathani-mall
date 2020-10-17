@@ -19,7 +19,7 @@ class BrandProduct(models.Model):
     name= fields.Char(String="Nombre")
     brand_image = fields.Binary()
     member_ids = fields.One2many('product.template', 'brand_id')
-    product_count = fields.Char(String='Cantidad de productos', compute='get_count_products', store=True)
+    product_count = fields.Char(String='Cantidad', compute='get_count_products', store=True)
 
     @api.depends('member_ids')
     def get_count_products(self):
@@ -29,5 +29,4 @@ class BrandProduct(models.Model):
 class BrandReportStock(models.Model):
     _inherit = 'stock.quant'
 
-    brand_id  = fields.Many2one(related='product_id.brand_id',
-        string='Brand', store=True, readonly=True)
+    brand_id  = fields.Many2one(related='product_id.brand_id', string='Brand', store=True, readonly=True)
