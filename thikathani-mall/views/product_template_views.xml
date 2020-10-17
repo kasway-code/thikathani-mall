@@ -8,9 +8,9 @@
                 <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]" position="inside">
                     <page name="more_info_page" string="Mas Informacion">
                         <group name="more_info_group">
-                            <field name="descripcion_origen"/>
-                            <field name="descripcion_beneficios"/>
-                            <field name="descripcion_usos"/>
+                            <field name="descripcion_origen" />
+                            <field name="descripcion_beneficios" />
+                            <field name="descripcion_usos" />
                         </group>
                     </page>
                 </xpath>
