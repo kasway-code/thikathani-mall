@@ -35,7 +35,7 @@
                         </group>
                         <notebook>
                             <page string="Productos">
-                                <field name="member_ids" widget="many2many" options="{'not_delete': True}">
+                                <field name="product_ids" widget="many2many" options="{'not_delete': True}">
                                     <kanban quick_create="false" create="true" delete="true">
                                         <field name="id" />
                                         <field name="name" />
@@ -68,7 +68,7 @@
             <field name="inherit_id" ref="product.product_template_search_view" />
             <field name="arch" type="xml">
                 <xpath expr="//search" position="inside">
-                    <filter string="Brand" name="Brand" context="{'group_by':'type_id'}" />
+                    <filter string="Type" name="Type" context="{'group_by':'type_id'}" />
                 </xpath>
             </field>
         </record>

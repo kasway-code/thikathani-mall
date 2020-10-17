@@ -9,12 +9,12 @@ class ProductTemplate(models.Model):
     descripcion_usos = fields.Text('Modos de uso')
     
     brand_id = fields.Many2one('product.brand',string='Marca')
-    ttype_id = fields.Many2one('product.type',string='Tipo')
+    type_id = fields.Many2one('product.type',string='Tipo')
     sku = fields.Char(
         string='SKU',
     )
 
-    @api.depends('products_ids')
+    @api.depends('sku')
     def get_sku(self):
         self.sku = brand_id + "test"
     
