@@ -7,13 +7,13 @@ class BrandProduct(models.Model):
     name= fields.Char("Nombre")
     extra= fields.Char("Extra")
     brand_image = fields.Binary()
-    products_ids = fields.One2many('product.template', 'brand_id')
+    members_ids = fields.One2many('product.template', 'brand_id')
    
-    product_count = fields.Char("Cantidad", compute='get_count_products', store=True)
+    product_count = fields.Char("Cantidad", compute='get_count_members', store=True)
 
-    @api.depends('products_ids')
-    def get_count_products(self):
-        self.product_count = len(self.products_ids)
+    @api.depends('members_ids')
+    def get_count_members(self):
+        self.product_count = len(self.members_ids)
 
 class BrandReportStock(models.Model):
     _inherit = 'stock.quant'
