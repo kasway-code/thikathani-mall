@@ -16,5 +16,5 @@ class ProductTemplate(models.Model):
 
     @api.depends('sku')
     def get_sku(self):
-        self.sku = brand_id + "test"
+        self.sku = self.brand_id + "test"
     
