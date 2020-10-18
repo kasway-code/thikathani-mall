@@ -10,7 +10,7 @@ class ProductTemplate(models.Model):
     
     brand_id = fields.Many2one('product.brand',string='Marca')
     type_id = fields.Many2one('product.type',string='Tipo')
-    sku = fields.Char(string='SKU' compute="get_sku")
+    sku = fields.Char(string='SKU', compute='get_sku')
 
     @api.depends('sku')
     def get_sku(self):
