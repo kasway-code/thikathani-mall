@@ -5,7 +5,7 @@
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_form_view" />
             <field name="arch" type="xml">
-                <field name="categ_id" position="after">
+                <field name="categ_id" position="before">
                     <field name="type_id" />
                 </field>
             </field>
@@ -16,7 +16,7 @@
             <field name="res_model">product.type</field>
             <field name="view_mode">tree,form</field>
         </record>
-    <!-- 
+        <!-- 
         <record id="product_type_view" model="ir.ui.view">
             <field name="name">Tipo de producto</field>
             <field name="model">product.type</field>
@@ -32,7 +32,7 @@
                             <div name="options_active" />
                         </div>
                     -->
-                        <!-- 
+        <!-- 
                         <notebook>
                             <page string="Productos">
                                 <field name="product_ids" widget="many2many" options="{'not_delete': True}">
@@ -63,7 +63,7 @@
                 </form> 
             </field> 
         </record> -->
-<!-- 
+        <!-- 
         <record id="type_group_by" model="ir.ui.view">
             <field name="name">product.template.search.inherit</field>
             <field name="model">product.template</field>

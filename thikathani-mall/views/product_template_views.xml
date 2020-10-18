@@ -11,7 +11,7 @@
                             <field name="descripcion_origen" />
                             <field name="descripcion_beneficios" />
                             <field name="descripcion_usos" />
-                            <field name="sku" />
+                            <field name="sku"/>
                         </group>
                     </page>
                 </xpath>

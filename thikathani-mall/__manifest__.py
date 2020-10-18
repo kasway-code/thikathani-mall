@@ -19,7 +19,7 @@
     'depends': [
         'base',
         'sale',
-        'stock'
+        'stock',
     ],
 
     'data': [
