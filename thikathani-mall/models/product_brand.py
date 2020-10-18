@@ -5,6 +5,7 @@ class BrandProduct(models.Model):
     _name = 'product.brand'
 
     name= fields.Char("Nombre")
+    extra= fields.Char("Extra")
     brand_image = fields.Binary()
     products_ids = fields.One2many('product.template', 'brand_id')
    
