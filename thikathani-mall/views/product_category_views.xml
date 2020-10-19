@@ -1,12 +1,13 @@
 <odoo>
     <data>
         <record id="view_product_category_form_inherit" model="ir.ui.view">
-            <field name="name">product.category.common.form.inherit</field>
+            <field name="name">product.category.thika.form.inherit</field>
             <field name="model">product.category</field>
             <field name="inherit_id" ref="product.category.form" />
             <field name="arch" type="xml">
+                <xpath expr="//field[@name='parent_id']" position="after">
                     <field name="internal_code" />
-
+                </xpath>
             </field>
         </record>
     </data>
