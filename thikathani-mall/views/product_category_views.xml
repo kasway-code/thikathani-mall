@@ -5,7 +5,7 @@
             <field name="model">product.category</field>
             <field name="inherit_id" ref="product.category.form" />
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='parent_id']" position="before">
+                <xpath expr="/sheet/group/field[@name='parent_id']" position="before">
                     <field name="internal_code" />
                 </xpath>
             </field>
