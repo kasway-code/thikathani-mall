@@ -3,6 +3,7 @@ from odoo import models, fields, api
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
+    
     descripcion_origen = fields.Text('Descripción y Origen')
     descripcion_beneficios = fields.Text('Beneficios')
     descripcion_usos = fields.Text('Modos de uso')
