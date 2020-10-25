@@ -6,22 +6,22 @@
             <field name="inherit_id" ref="product.product_template_form_view" />
             <field name="arch" type="xml">
                 <xpath expr="//page[@name='inventory']" position="after">
-                    <page name="studio_page_boUGl" string="Mas Informacion">
-                        <group name="studio_group_boUGl">
+                    <page name="more_info_product" string="Mas Informacion">
+                        <group name="column_one_more_info_product">
                             <field name="descripcion_origen" />
                             <field name="descripcion_beneficios" />
                             <field name="descripcion_usos" />
                             <field name="sku"/>
                         </group>
-                        <group name="studio_group_DIttd">
-                            <group name="studio_group_DIttd_left">
+                        <group name="column_two_more_info_product">
+                            <group>
                               <field name="es_organico" string="Organico"/>
                               <field name="es_vegano" string="Vegano"/>
                               <field name="es_vegetariano" string="Vegetariano"/>
                               <field name="es_keto" string="Keto"/>
                               <field name="es_usda" string="USDA"/>
                             </group>
-                            <group name="studio_group_DIttd_right">
+                            <group>
                               <field name="es_sin_gluten" string="Sin gluten"/>
                               <field name="es_sin_lactosa" string="Sin lactosa"/>
                               <field name="es_sin_azucar" string="Sin azucar"/>
