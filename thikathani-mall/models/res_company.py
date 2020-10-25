@@ -6,7 +6,7 @@ from odoo import models, fields, api
 class Company(models.Model):
     _inherit = 'res.company'
 
-    logo_url = fields.Char('Logo URL')
+    
     #logo = fields.Binary(related='partner_id.image_1920', default=_get_logo, string="Company Logo", readonly=False)
     #logo_url = fields.Char('Logo URL')
     #    compute='_compute_logo_url')

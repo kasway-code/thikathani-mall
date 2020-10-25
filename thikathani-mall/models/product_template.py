@@ -4,6 +4,8 @@ from odoo import models, fields, api
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
     
+    logo_url = fields.Char('Logo URL')
+
     descripcion_origen = fields.Text('Descripción y Origen')
     descripcion_beneficios = fields.Text('Beneficios')
     descripcion_usos = fields.Text('Modos de uso')
@@ -26,4 +28,11 @@ class ProductTemplate(models.Model):
     @api.depends('sku')
     def get_sku(self):
         self.sku = str(self.brand_id) + "test"
+
+    @api.onchange('logo_url')
+    def _onchange_logo_url(self):
+        if not self.logo_url:
+            return 
+        else:
+            self.logo = base64.b64encode(requests.get(self.logo_url).content)
     
