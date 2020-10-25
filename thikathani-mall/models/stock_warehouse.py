@@ -10,5 +10,5 @@ class Warehouse(models.Model):
 
     city = fields.Char('City', related='partner_id.city', readonly=True)
     state = fields.Char('State', related='partner_id.state_id', readonly=True)
-    district = fields.Char('District', related='partner_id.	l10n_pe_district', readonly=True)
+    district = fields.Char('District', related='partner_id.l10n_pe_district', readonly=True)
     # image_url =
