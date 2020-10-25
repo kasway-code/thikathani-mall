@@ -16,4 +16,4 @@ class ProductCategory(models.Model):
         if not self.image_url:
             return 
         else:
-            self.logo = base64.b64encode(requests.get(self.image_url).content)
+            self.image = base64.b64encode(requests.get(self.image_url).content)
