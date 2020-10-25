@@ -11,6 +11,9 @@
                 <xpath expr="//div[@class='oe_title']" position="before">
                     <field name="image" widget="image" class="oe_avatar oe_right"/>
                 </xpath>
+                <xpath expr="//field[@name='parent_id']" position="after">
+                    <field name="image_url"/>
+                </xpath>
             </field>
         </record>
     </data>
