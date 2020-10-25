@@ -7,7 +7,9 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='parent_id']" position="before">
                     <field name="internal_code" />
-                    <field name="image" widget='image' />
+                </xpath>
+                <xpath expr="//field[@name='id']" position="before">
+                    <field name="image" widget='Imagen' />
                 </xpath>
             </field>
         </record>
