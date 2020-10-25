@@ -7,5 +7,3 @@ class Partner(models.Model):
     # Supported
     #'partner_city': fields.related('res.partne', 'city', readonly=True, type='char', store=True)
     #city = fields.One2many('res.partner', 'partner_id', related="partner_id.city", readonly=True)
-
-    district = fields.Char('Distric')
