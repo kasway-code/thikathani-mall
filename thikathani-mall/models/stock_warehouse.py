@@ -2,10 +2,13 @@
 from odoo import models, fields, api
 
 
-class StockWarehouse(models.Model):
+class Warehouse(models.Model):
     _inherit = 'stock.warehouse'
     # Supported
-    city = fields.One2many('res.partner', 'partner_id', related="partner_id.city", readonly=True)
+    #'partner_city': fields.related('res.partne', 'city', readonly=True, type='char', store=True)
+    #city = fields.One2many('res.partner', 'partner_id', related="partner_id.city", readonly=True)
+
+    partner_city = fields.Char('City', related='partner_id.city', readonly=True)
 
     # state =
     # district =
