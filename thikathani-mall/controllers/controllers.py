@@ -20,8 +20,3 @@ class ProductIlo(http.Controller):
             'object': obj
         })
 '''
-
-class ProductTemplate(http.Controller):
-    @http.route('/efact/efact/' , auth='public')
-    def index(self, **kw):
-        return {"msg":"Hello, world"}
