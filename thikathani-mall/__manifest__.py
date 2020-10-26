@@ -28,6 +28,7 @@
         'views/product_template_views.xml',
         'views/product_category_views.xml',
         'views/res_company_views.xml',
+        'views/stock_warehouse_views.xml',
         'security/ir.model.access.csv',
     ],
 
