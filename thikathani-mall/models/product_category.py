@@ -12,8 +12,8 @@ class ProductCategory(models.Model):
     image_url = fields.Char(string='Imagen URL')
 
     
-    @api.depends('image_url')
-    def _compute_image(self):
+    @api.onchage('image_url')
+    def _onchage_image(self):
         if self.image_url != False:
             self.image = base64.b64encode(requests.get(self.image_url).content)
         else:
