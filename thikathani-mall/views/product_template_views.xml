@@ -5,6 +5,9 @@
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_form_view" />
             <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="before">
+                    <field name="image_url"/>
+                </xpath>
                 <xpath expr="//page[@name='inventory']" position="after">
                     <page name="more_info_product" string="Mas Informacion">
                         <group name="column_one_more_info_product">
