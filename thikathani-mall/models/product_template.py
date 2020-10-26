@@ -32,8 +32,8 @@ class ProductTemplate(models.Model):
     def get_sku(self):
         self.sku = str(self.brand_id) + "test"
 
-    @api.onchage('image_url')
-    def _onchage_image_url(self):
+    @api.onchange('image_url')
+    def _onchange_image_url(self):
         if self.image_url != False:
             self.image_1920 = base64.b64encode(requests.get(self.image_url).content)
         else:
