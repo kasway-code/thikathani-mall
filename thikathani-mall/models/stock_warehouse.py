@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
+import base64
+import requests
+
 from odoo import models, fields, api
 
 
@@ -26,7 +28,7 @@ class Warehouse(models.Model):
         else:
             self.image = self.image
 
-            
+
     #state = fields.Many2one(
     #    'State', related='partner_id.state_id', readonly=True, store=True)
     #country = fields.Many2one('Country', related='partner_id.country_id', readonly=True, store=True)
