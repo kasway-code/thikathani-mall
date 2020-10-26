@@ -14,9 +14,7 @@ class ProductCategory(models.Model):
     
     @api.depends('image')
     def _compute_image(self):
-        if not self.image_url:
-            return 
-        else:
+        if self.image_url != False:
             self.image = base64.b64encode(requests.get(self.image_url).content)
     #@api.onchange('image_url')
     #def _onchange_image_url(self):
