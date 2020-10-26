@@ -31,11 +31,11 @@ class ProductTemplate(models.Model):
     @api.depends('sku')
     def get_sku(self):
         self.sku = str(self.brand_id) + "test"
-
+        
     @api.onchange('image_url')
     def _onchange_image_url(self):
-        if self.image_url != False:
+        if self.image_url != False and self.image_url != "":
             self.image_1920 = base64.b64encode(requests.get(self.image_url).content)
         else:
-            self.image_1920 = self.image_1920
+            self.image_1920 = False
     
