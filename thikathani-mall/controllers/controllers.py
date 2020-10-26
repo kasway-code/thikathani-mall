@@ -20,3 +20,15 @@ class ProductIlo(http.Controller):
             'object': obj
         })
 '''
+
+class ProductTemplate(http.Controller):
+    @http.route(['/shop/product/<model("product.template"):product>'], type='http', auth="public", website=True)
+    def product(self, product, category='', search='', **kwargs):
+
+        response = super(website_sale_attachment, self).product(product, category='', search='', **kwargs)
+
+        attachment_obj = request.env['ir.attachment']
+        images = attachment_obj.sudo().search([('res_model', '=', 'product.template'), ('res_id', '=', product.id)])
+
+        response.qcontext.update({'images': images,})
+        return response
