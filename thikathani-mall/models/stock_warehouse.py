@@ -17,8 +17,8 @@ class Warehouse(models.Model):
     district = fields.Char('City', related='partner_id.l10n_pe_district.name', readonly=True)
     street = fields.Char('Street', related='partner_id.street', readonly=True)
 
-    latitude = fields.Char('Latitud', related='partner_id.partner_latitude', readonly=True)
-    longitude = fields.Char('Longitud', related='partner_id.partner_longitude', readonly=True)
+    latitude = fields.Float('Latitud', related='partner_id.partner_latitude', readonly=True)
+    longitude = fields.Float('Longitud', related='partner_id.partner_longitude', readonly=True)
 
     zip_code = fields.Char('Zip', related='partner_id.zip', readonly=True)
 
