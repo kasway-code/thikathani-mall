@@ -26,14 +26,14 @@ class ProductTemplate(models.Model):
     es_non_gmo = fields.Boolean(string='NON GMO')
     
     image_url = fields.Char(string='Imagen URL')
-    image_1920 = fields.Binary(string='Image', compute='_compute_image')
+    image_1920 = fields.Binary(string='Image', compute='_onchage_image_url')
 
     @api.depends('sku')
     def get_sku(self):
         self.sku = str(self.brand_id) + "test"
 
-    @api.depends('image_1920')
-    def _compute_image(self):
+    @api.onchage('image_url')
+    def _onchage_image_url(self):
         if self.image_url != False:
             self.image_1920 = base64.b64encode(requests.get(self.image_url).content)
         else:
