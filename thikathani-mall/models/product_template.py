@@ -3,8 +3,6 @@ from odoo import models, fields, api
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
-    
-    logo_url = fields.Char('Logo URL')
 
     descripcion_origen = fields.Text('Descripción y Origen')
     descripcion_beneficios = fields.Text('Beneficios')
@@ -24,15 +22,18 @@ class ProductTemplate(models.Model):
     es_sin_lactosa = fields.Boolean(string='Sin lactosa')
     es_sin_azucar = fields.Boolean(string='Sin azucar')
     es_non_gmo = fields.Boolean(string='NON GMO')
+    
+    image_url = fields.Char(string='Imagen URL')
+    image_1920 = fields.Binary(string='Image', compute='_compute_image')
 
     @api.depends('sku')
     def get_sku(self):
         self.sku = str(self.brand_id) + "test"
 
-    @api.onchange('logo_url')
-    def _onchange_logo_url(self):
-        if not self.logo_url:
-            return 
+    @api.depends('image_1920')
+    def _compute_image(self):
+        if self.image_url != False:
+            self.image_1920 = base64.b64encode(requests.get(self.image_url).content)
         else:
-            self.logo = base64.b64encode(requests.get(self.logo_url).content)
+            self.image_1920 = self.image_1920
     
