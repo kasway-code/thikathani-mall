@@ -26,7 +26,7 @@ class ProductTemplate(models.Model):
     es_non_gmo = fields.Boolean(string='NON GMO')
     
     image_url = fields.Char(string='Imagen URL')
-    image_1920 = fields.Binary(string='Image', compute='_onchage_image_url')
+    image_1920 = fields.Binary(string='Image')
 
     @api.depends('sku')
     def get_sku(self):
