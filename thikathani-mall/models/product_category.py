@@ -8,7 +8,7 @@ class ProductCategory(models.Model):
     _inherit = 'product.category'
     internal_code = fields.Char('Código de la categoría')
 
-    image = fields.Binary(string='Image', compute=_compute_image)
+    image = fields.Binary(string='Image', compute='_compute_image')
     image_url = fields.Char(string='Imagen URL')
 
     
