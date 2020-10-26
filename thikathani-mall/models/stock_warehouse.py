@@ -22,16 +22,16 @@ class Warehouse(models.Model):
 
     zip_code = fields.Char('Zip', related='partner_id.zip', readonly=True)
 
-    image = fields.Binary(string='Image', compute='_compute_image')
+    image = fields.Binary(string='Image')
     image_url = fields.Char(string='Imagen URL')
 
     
-    @api.depends('image')
-    def _compute_image(self):
-        if self.image_url != False:
+    @api.onchange('image_url')
+    def _onchage_image_url(self):
+        if self.image_url != False and self.image_url != "":
             self.image = base64.b64encode(requests.get(self.image_url).content)
         else:
-            self.image = self.image
+            self.image = False
 
 
     #state = fields.Many2one(

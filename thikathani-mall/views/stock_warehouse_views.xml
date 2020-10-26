@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+        <record id="view_stock_warehouse_form_inherit" model="ir.ui.view">
+            <field name="name">stock.warehouse.thika.form.inherit</field>
+            <field name="model">stock.warehouse</field>
+            <field name="inherit_id" ref="stock.view_warehouse" />
+            <field name="arch" type="xml">
+                <xpath expr="//label[@class='oe_edit_only']" position="before">
+                    <field name="image" widget="image" class="oe_avatar oe_right"/>
+                </xpath>
+                <xpath expr="//field[@name='code']" position="after">
+                    <field name="image_url"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
