@@ -8,12 +8,19 @@ class ProductCategory(models.Model):
     _inherit = 'product.category'
     internal_code = fields.Char('Código de la categoría')
 
-    image = fields.Binary(string='Image')
+    image = fields.Binary(string='Image', compute=_compute_field)
     image_url = fields.Char(string='Imagen URL')
 
-    @api.onchange('image_url')
-    def _onchange_image_url(self):
+    
+    @api.depends('image')
+    def _compute_image(self):
         if not self.image_url:
             return 
         else:
             self.image = base64.b64encode(requests.get(self.image_url).content)
+    #@api.onchange('image_url')
+    #def _onchange_image_url(self):
+    #    if not self.image_url:
+    #        return 
+    #    else:
+    #        self.image = base64.b64encode(requests.get(self.image_url).content)
