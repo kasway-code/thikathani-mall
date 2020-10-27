@@ -34,6 +34,7 @@
                             <div name="options_active" />
                         </div>
                         <group>
+                            <field name="image_url"/>
                             <field name="product_count"/>
                         </group>
                         <notebook>
@@ -78,55 +79,4 @@
 
         <menuitem id="product_brand_inventory" name="Marcas de producto" action="product_brand_action" parent="stock.menu_stock_inventory_control" sequence="2" />
     </data>
-
-    <!--
-    <record id="view_product_brand_tree" model="ir.ui.view">
-        <field name="name">product.brand.tree</field>
-        <field name="model">product.brand</field>
-        <field name="arch" type="xml">
-            <tree string="Marca">
-                <field name="code" />
-                <field name="brand_name" />
-            </tree>
-        </field>
-    </record>
-
-    
-    <record id="action_tree_product_brand" model="ir.actions.act_window">
-        <field name="type">ir.actions.act_window</field>
-        <field name="name">Marca</field>
-        <field name="res_model">product.brand</field>
-        <field name="view_mode">tree,form</field>
-        <field name="domain">[]</field>
-        <field name="context">\{}</field>
-    </record>
-    
-    
-    
-    <menuitem id="product_brand_inventory" name="Product Brands" action="action_tree_product_brand" parent="stock.menu_stock_inventory_control" sequence="2" />
--->
-    <!--
-
-    <record id="menu_action_tree_product_brand" model="ir.ui.menu" >
-        <field name="name">Marca</field>
-        <field name="sequence" eval="False" />
-        <field name="active" eval="True" />
-        <field name="action" ref="action_tree_product_brand" />
-        <field name="parent_id" ref="stock.menu_product_in_config_stock" />
-    </record>
-
-
-    <menuitem id="menu_item_product_brand" name="Marca"
-        parent="stock.menu_product_in_config_stock"/>
-
-
- <record id="product_brand_menu_item" model="ir.ui.menu">
-        <field name="action" ref="product_brand_view_tree" />
-        <field name="active" eval="True" />
-        <field name="name">Marcas</field>
-        <field name="parent_id" ref="stock.menu_product_in_config_stock" />
-        <field name="sequence" eval="False" />
-    </record>
- -->
-
 </odoo>

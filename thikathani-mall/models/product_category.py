@@ -13,7 +13,7 @@ class ProductCategory(models.Model):
 
     @api.onchange('image_url')
     def _onchage_image_url(self):
-        if not self.image_url:
+        if self.image_url != False and self.image_url != "":
             self.image = base64.b64encode(requests.get(self.image_url).content)
         else:
             self.image = False
