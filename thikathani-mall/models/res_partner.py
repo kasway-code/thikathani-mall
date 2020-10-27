@@ -4,6 +4,7 @@ from odoo import models, fields, api
 
 class Partner(models.Model):
     _inherit = 'res.partner'
-    # Supported
-    #'partner_city': fields.related('res.partne', 'city', readonly=True, type='char', store=True)
-    #city = fields.One2many('res.partner', 'partner_id', related="partner_id.city", readonly=True)
+
+    country_name = fields.Char('Country', related='country_id.name', readonly=True)
+    state_name = fields.Char('State', related='state_id.name', readonly=True)
+    district_name = fields.Char('District', related='l10n_pe_district.name', readonly=True)
