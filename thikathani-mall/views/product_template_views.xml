@@ -16,6 +16,21 @@
                             <field name="descripcion_usos" />
                             <field name="sku"/>
                         </group>
+                        <group name="column_two_more_info_product">
+                            <group>
+                              <field name="es_organico" string="Organico"/>
+                              <field name="es_vegano" string="Vegano"/>
+                              <field name="es_vegetariano" string="Vegetariano"/>
+                              <field name="es_keto" string="Keto"/>
+                              <field name="es_usda" string="USDA"/>
+                            </group>
+                            <group>
+                              <field name="es_sin_gluten" string="Sin gluten"/>
+                              <field name="es_sin_lactosa" string="Sin lactosa"/>
+                              <field name="es_sin_azucar" string="Sin azucar"/>
+                              <field name="es_non_gmo" string="NON GMO"/>
+                            </group>
+                          </group>
                     </page>
                 </xpath>
             </field>
