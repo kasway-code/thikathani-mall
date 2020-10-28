@@ -21,11 +21,11 @@ class ProductTemplate(models.Model):
         inverse_name='id',
     )
 
-    property_images = fields.One2many(
-        string='Iconos de propiedades',
-        comodel_name='product.property',
-        inverse_name='property_image',
-    )
+   #property_images = fields.One2many(
+    #    string='Iconos de propiedades',
+   #     comodel_name='product.property',
+   #     inverse_name='property_image',
+   # )
 
     image_url = fields.Char(string='Imagen URL')
     image_1920 = fields.Binary(string='Image')
