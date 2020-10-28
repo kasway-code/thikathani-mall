@@ -1,4 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_product_brand,access_product_brand,model_product_brand,,1,1,1,1
-access_product_template_property,access_product_template_property,model_product_template_property,,1,1,1,1
+access_product_property,access_product_property,model_product_property,,1,1,1,1
 access_product_template_property_line,access_product_template_property_line,model_product_template_property_line,,1,1,1,1

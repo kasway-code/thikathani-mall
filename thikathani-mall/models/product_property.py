@@ -11,7 +11,7 @@ _logger = logging.getLogger(__name__)
 
 
 class ProductProperty(models.Model):
-    _name = "product.template.property"
+    _name = "product.property"
     _description = "Product Property"
     _parent_name = "parent_id"
     _parent_store = True
@@ -23,14 +23,14 @@ class ProductProperty(models.Model):
         'Complete Name', compute='_compute_complete_name',
         store=True)
     parent_id = fields.Many2one(
-        'product.template.property', 'Parent Property', index=True, ondelete='cascade')
+        'product.property', 'Parent Property', index=True, ondelete='cascade')
     parent_path = fields.Char(index=True)
     child_id = fields.One2many(
-        'product.template.property', 'parent_id', 'Child properties')
+        'product.property', 'parent_id', 'Child properties')
 
     property_line_ids = fields.One2many(
         string='Property Line',
-        comodel_name='product.template.property.line',
+        comodel_name='product.property.line',
         inverse_name='property_id',
     )
 
@@ -65,7 +65,7 @@ class ProductProperty(models.Model):
         return self.create({'name': name}).name_get()[0]
 
     def unlink(self):
-        main_property = self.env.ref('product.template.product_property_all')
+        main_property = self.env.ref('product.product_property_all')
         if main_property in self:
             raise UserError(
                 _("You cannot delete this product property, it is the default generic property."))
@@ -73,7 +73,7 @@ class ProductProperty(models.Model):
 
 
 class ProductPropertyLine(models.Model):
-    _name = "product.template.property.line"
+    _name = "product.property.line"
 
     product_tmpl_id = fields.Many2one(
         string='Producto',
