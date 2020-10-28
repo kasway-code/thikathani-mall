@@ -14,11 +14,13 @@
                 </form>
             </field>
         </record>
+
         <record id="product_property_action" model="ir.actions.act_window">
             <field name="name">Propiedades de productos</field>
             <field name="res_model">product.property</field>
             <field name="view_mode">tree,form</field>
         </record>
-        <menuitem id="product_property_inventory" name="Propiedades de productos" action="product_property_action" parent="stock.menu_stock_inventory_control" sequence="3" />
+
+        <menuitem id="product_property_inventory" name="Propiedades de productos" action="product_property_action" parent="stock.menu_stock_inventory_control" sequence="1" />
     </data>
 </odoo>
