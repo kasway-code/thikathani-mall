@@ -22,9 +22,11 @@ class ProductProperty(models.Model):
     complete_name = fields.Char(
         'Complete Name', compute='_compute_complete_name',
         store=True)
-    parent_id = fields.Many2one('product.property', 'Parent Property', index=True, ondelete='cascade')
+    parent_id = fields.Many2one(
+        'product.property', 'Parent Property', index=True, ondelete='cascade')
     parent_path = fields.Char(index=True)
-    child_id = fields.One2many('product.property', 'parent_id', 'Child Categories')
+    child_id = fields.One2many(
+        'product.property', 'parent_id', 'Child Categories')
     product_count = fields.Integer(
         '# Products', compute='_compute_product_count',
         help="The number of products under this property (Does not consider the children categories)")
@@ -33,13 +35,16 @@ class ProductProperty(models.Model):
     def _compute_complete_name(self):
         for property in self:
             if property.parent_id:
-                property.complete_name = '%s / %s' % (property.parent_id.complete_name, property.name)
+                property.complete_name = '%s / %s' % (
+                    property.parent_id.complete_name, property.name)
             else:
                 property.complete_name = property.name
 
     def _compute_product_count(self):
-        read_group_res = self.env['product.template'].read_group([('categ_id', 'child_of', self.ids)], ['categ_id'], ['categ_id'])
-        group_data = dict((data['categ_id'][0], data['categ_id_count']) for data in read_group_res)
+        read_group_res = self.env['product.template'].read_group(
+            [('categ_id', 'child_of', self.ids)], ['categ_id'], ['categ_id'])
+        group_data = dict((data['categ_id'][0], data['categ_id_count'])
+                          for data in read_group_res)
         for categ in self:
             product_count = 0
             for sub_categ_id in categ.search([('id', 'child_of', categ.ids)]).ids:
@@ -59,5 +64,6 @@ class ProductProperty(models.Model):
     def unlink(self):
         main_property = self.env.ref('product.product_property_all')
         if main_property in self:
-            raise UserError(_("You cannot delete this product property, it is the default generic property."))
+            raise UserError(
+                _("You cannot delete this product property, it is the default generic property."))
         return super().unlink()
