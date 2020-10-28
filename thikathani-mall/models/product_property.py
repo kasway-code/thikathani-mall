@@ -34,7 +34,7 @@ class ProductProperty(models.Model):
         inverse_name='property_id',
     )
 
-    field_namemage_url = fields.Char(string='Imagen URL')
+    image_url = fields.Char(string='Imagen URL')
     property_image = fields.Binary(string='Image')
 
     @api.onchange('image_url')
