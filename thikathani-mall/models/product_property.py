@@ -11,7 +11,7 @@ _logger = logging.getLogger(__name__)
 
 
 class ProductProperty(models.Model):
-    _name = "product.property"
+    _name = "product.template.property"
     _description = "Product Property"
     _parent_name = "parent_id"
     _parent_store = True
@@ -23,15 +23,18 @@ class ProductProperty(models.Model):
         'Complete Name', compute='_compute_complete_name',
         store=True)
     parent_id = fields.Many2one(
-        'product.property', 'Parent Property', index=True, ondelete='cascade')
+        'product.template.property', 'Parent Property', index=True, ondelete='cascade')
     parent_path = fields.Char(index=True)
     child_id = fields.One2many(
-        'product.property', 'parent_id', 'Child properties')
-    product_count = fields.Integer(
-        '# Products', compute='_compute_product_count',
-        help="The number of products under this property (Does not consider the children properties)")
+        'product.template.property', 'parent_id', 'Child properties')
 
-    image_url = fields.Char(string='Imagen URL')
+    property_line_ids = fields.One2many(
+        string='Property Line',
+        comodel_name='product.template.property.line',
+        inverse_name='property_id',
+    )
+
+    field_namemage_url = fields.Char(string='Imagen URL')
     property_image = fields.Binary(string='Image')
 
     @api.onchange('image_url')
@@ -51,17 +54,6 @@ class ProductProperty(models.Model):
             else:
                 property.complete_name = property.name
 
-    def _compute_product_count(self):
-        read_group_res = self.env['product.template'].read_group(
-            [('categ_id', 'child_of', self.ids)], ['categ_id'], ['categ_id'])
-        group_data = dict((data['categ_id'][0], data['categ_id_count'])
-                          for data in read_group_res)
-        for categ in self:
-            product_count = 0
-            for sub_categ_id in categ.search([('id', 'child_of', categ.ids)]).ids:
-                product_count += group_data.get(sub_categ_id, 0)
-            categ.product_count = product_count
-
     @api.constrains('parent_id')
     def _check_property_recursion(self):
         if not self._check_recursion():
@@ -73,8 +65,22 @@ class ProductProperty(models.Model):
         return self.create({'name': name}).name_get()[0]
 
     def unlink(self):
-        main_property = self.env.ref('product.product_property_all')
+        main_property = self.env.ref('product.template.product_property_all')
         if main_property in self:
             raise UserError(
                 _("You cannot delete this product property, it is the default generic property."))
         return super().unlink()
+
+
+class ProductPropertyLine(models.Model):
+    _name = "product.template.property.line"
+
+    product_tmpl_id = fields.Many2one(
+        string='Producto',
+        comodel_name='product.template'
+    )
+
+    property_id = fields.Many2one(
+        string='Propiedad',
+        comodel_name='product.property'
+    )
