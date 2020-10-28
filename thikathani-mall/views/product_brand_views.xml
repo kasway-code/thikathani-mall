@@ -10,14 +10,12 @@
                 </field>
             </field>
         </record>
-
-        
+    
         <record id="product_brand_action" model="ir.actions.act_window">
             <field name="name">Marca de producto</field>
             <field name="res_model">product.brand</field>
             <field name="view_mode">tree,form</field>
         </record>
-
 
         <record id="product_brand_view" model="ir.ui.view">
             <field name="name">Marca de producto</field>
