@@ -11,14 +11,13 @@ class ProductTemplate(models.Model):
     descripcion_usos = fields.Text('Modos de uso')
     
     brand_id = fields.Many2one('product.brand',string='Marca')
-    type_id = fields.Many2one('product.type',string='Tipo')
     sku = fields.Char(string='SKU', compute='get_sku')
 
-    property_ids = fields.One2many(
-        string='Propiedades',
-        comodel_name='product.property',
-        inverse_name='id',
-    )
+    #property_ids = fields.One2many(
+    #    string='Propiedades',
+    #    comodel_name='product.property',
+    #    inverse_name='id',
+    #)
     
 
     image_url = fields.Char(string='Imagen URL')
