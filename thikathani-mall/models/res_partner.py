@@ -8,3 +8,10 @@ class Partner(models.Model):
     country_name = fields.Char('Country', related='country_id.name', readonly=True)
     state_name = fields.Char('State', related='state_id.name', readonly=True)
     district_name = fields.Char('District', related='l10n_pe_district.name', readonly=True)
+
+    favorite_product_ids = fields.One2many(
+        string='Favorite Product',
+        comodel_name='partner.product.favorite',
+        inverse_name='product_id',
+    )
+    

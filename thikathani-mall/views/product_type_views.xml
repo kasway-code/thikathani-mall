@@ -1,3 +1,4 @@
+       <!-- 
 <odoo>
     <data>
         <record id="product_type_id" model="ir.ui.view">
@@ -16,7 +17,7 @@
             <field name="res_model">product.type</field>
             <field name="view_mode">tree,form</field>
         </record>
-        <!-- 
+ 
         <record id="product_type_view" model="ir.ui.view">
             <field name="name">Tipo de producto</field>
             <field name="model">product.type</field>
@@ -74,7 +75,8 @@
                 </xpath>
             </field>
         </record>
--->
+
         <menuitem id="product_type_inventory" name="Tipos de producto" action="product_type_action" parent="stock.menu_stock_inventory_control" sequence="4" />
     </data>
 </odoo>
+-->
