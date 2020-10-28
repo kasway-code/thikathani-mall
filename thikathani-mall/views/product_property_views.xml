@@ -8,10 +8,14 @@
                 <form class="oe_form_configuration">
                     <sheet>
                         <div class="oe_title">
-                            <h1><field name="name" placeholder="e.g. Lamps"/></h1>
+                            <h1>
+                                <field name="name" placeholder="e.g. Lamps" />
+                            </h1>
                         </div>
+                        <field name="category_image" widget="image" class="oe_avatar oe_right" />
                         <group name="first" col="2">
-                            <field name="parent_id" class="oe_inline"/>
+                            <field name="parent_id" class="oe_inline" />
+                            <field name="image_url" />
                         </group>
                     </sheet>
                 </form>
