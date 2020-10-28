@@ -1,4 +1,14 @@
-from odoo import models, fields, api
+import logging
+import re
+
+from odoo import api, fields, models, tools, _
+from odoo.exceptions import UserError, ValidationError
+from odoo.osv import expression
+
+from odoo.tools import float_compare
+
+_logger = logging.getLogger(__name__)
+
 
 class ProductProperty(models.Model):
     _name = "product.property"
