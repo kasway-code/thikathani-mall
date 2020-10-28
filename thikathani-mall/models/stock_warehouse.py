@@ -28,6 +28,13 @@ class Warehouse(models.Model):
             self.image = base64.b64encode(requests.get(self.image_url).content)
         else:
             self.image = False
+    
+    @api.onchange('warehouse_image')
+    def _onchage_image_url(self):
+        if self.warehouse_image != False and self.warehouse_image != "":
+            self.image_url = f'/web/image/stock.warehouse/{id}/warehouse_image'
+        else:
+            self.image_url = False
 
 
     #state = fields.Many2one(
