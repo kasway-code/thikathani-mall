@@ -17,8 +17,7 @@ class ProductTemplate(models.Model):
 
     property_ids = fields.One2many(
         string='Propiedades',
-        comodel_name='product.property',
-        inverse_name='id',
+        comodel_name='product.property'
     )
 
    #property_images = fields.One2many(
