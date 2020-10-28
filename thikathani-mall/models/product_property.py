@@ -84,3 +84,5 @@ class ProductPropertyLine(models.Model):
         string='Propiedad',
         comodel_name='product.property'
     )
+
+    property_image = fields.Char('Imagen de la propiedad', related='property_id.property_image', readonly=True)

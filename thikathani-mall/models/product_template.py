@@ -21,13 +21,7 @@ class ProductTemplate(models.Model):
         comodel_name='product.template.property.line',
         inverse_name='product_tmpl_id',
     )
-
-   #property_images = fields.One2many(
-    #    string='Iconos de propiedades',
-   #     comodel_name='product.property',
-   #     inverse_name='property_image',
-   # )
-
+    
     image_url = fields.Char(string='Imagen URL')
     image_1920 = fields.Binary(string='Image')
 
