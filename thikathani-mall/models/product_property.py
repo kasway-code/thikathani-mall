@@ -26,10 +26,21 @@ class ProductProperty(models.Model):
         'product.property', 'Parent Property', index=True, ondelete='cascade')
     parent_path = fields.Char(index=True)
     child_id = fields.One2many(
-        'product.property', 'parent_id', 'Child Categories')
+        'product.property', 'parent_id', 'Child properties')
     product_count = fields.Integer(
         '# Products', compute='_compute_product_count',
-        help="The number of products under this property (Does not consider the children categories)")
+        help="The number of products under this property (Does not consider the children properties)")
+
+    image_url = fields.Char(string='Imagen URL')
+    property_image = fields.Binary(string='Image')
+
+    @api.onchange('image_url')
+    def _onchange_image_url(self):
+        if self.image_url != False and self.image_url != "":
+            self.property_image = base64.b64encode(
+                requests.get(self.image_url).content)
+        else:
+            self.property_image = False
 
     @api.depends('name', 'parent_id.complete_name')
     def _compute_complete_name(self):
@@ -54,7 +65,7 @@ class ProductProperty(models.Model):
     @api.constrains('parent_id')
     def _check_property_recursion(self):
         if not self._check_recursion():
-            raise ValidationError(_('You cannot create recursive categories.'))
+            raise ValidationError(_('You cannot create recursive properties.'))
         return True
 
     @api.model
