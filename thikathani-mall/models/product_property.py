@@ -30,7 +30,7 @@ class ProductProperty(models.Model):
 
     property_line_ids = fields.One2many(
         string='Property Line',
-        comodel_name='product.property.line',
+        comodel_name='product.template.property.line',
         inverse_name='property_id',
     )
 
