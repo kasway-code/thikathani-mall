@@ -85,4 +85,4 @@ class ProductPropertyLine(models.Model):
         comodel_name='product.property'
     )
 
-    property_image = fields.Char('Imagen de la propiedad', related='property_id.property_image', readonly=True)
+    property_image = fields.Binary('Imagen de la propiedad', related='property_id.property_image', readonly=True)
