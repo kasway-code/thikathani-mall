@@ -12,7 +12,7 @@
                                 <field name="name" placeholder="e.g. Lamps" />
                             </h1>
                         </div>
-                        <field name="category_image" widget="image" class="oe_avatar oe_right" />
+                        <field name="property_image" widget="image" class="oe_avatar oe_right" />
                         <group name="first" col="2">
                             <field name="parent_id" class="oe_inline" />
                             <field name="image_url" />
