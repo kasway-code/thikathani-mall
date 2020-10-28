@@ -73,7 +73,7 @@ class ProductProperty(models.Model):
 
 
 class ProductPropertyLine(models.Model):
-    _name = "product.property.line"
+    _name = "product.template.property.line"
 
     product_tmpl_id = fields.Many2one(
         string='Producto',
