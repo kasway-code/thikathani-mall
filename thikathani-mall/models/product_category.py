@@ -8,12 +8,12 @@ class ProductCategory(models.Model):
     _inherit = 'product.category'
     internal_code = fields.Char('Código de la categoría')
     #"test "
-    image = fields.Binary(string='Image')
+    category_image = fields.Binary(string='Image')
     image_url = fields.Char(string='Imagen URL')
 
     @api.onchange('image_url')
     def _onchage_image_url(self):
         if self.image_url != False and self.image_url != "":
-            self.image = base64.b64encode(requests.get(self.image_url).content)
+            self.category_image = base64.b64encode(requests.get(self.image_url).content)
         else:
-            self.image = False
+            self.category_image = False

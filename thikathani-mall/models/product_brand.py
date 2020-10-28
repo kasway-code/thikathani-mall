@@ -5,14 +5,12 @@ from odoo import models, fields, api
 
 class BrandProduct(models.Model):
     _name = 'product.brand'
+    name= fields.Char("Nombre de la marca")
 
-    name= fields.Char("Nombre")
-    extras= fields.Char("Extras")
-    
     members_ids = fields.One2many('product.template', 'brand_id')
     product_count = fields.Char("Cantidad", compute='get_count_members', store=True)
 
-    brand_image = fields.Binary()
+    brand_image = fields.Binary('Image')
     image_url = fields.Char(string='Imagen URL')
 
     @api.onchange('image_url')
