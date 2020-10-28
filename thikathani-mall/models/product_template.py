@@ -13,17 +13,6 @@ class ProductTemplate(models.Model):
     brand_id = fields.Many2one('product.brand',string='Marca')
     type_id = fields.Many2one('product.type',string='Tipo')
     sku = fields.Char(string='SKU', compute='get_sku')
-
-    
-    es_organico = fields.Boolean(string='Organico')
-    es_vegano = fields.Boolean(string='Vegano')
-    es_vegetariano = fields.Boolean(string='Vegetariano')
-    es_keto = fields.Boolean(string='Keto')
-    es_usda = fields.Boolean(string='USDA')
-    es_sin_gluten = fields.Boolean(string='Sin gluten')
-    es_sin_lactosa = fields.Boolean(string='Sin lactosa')
-    es_sin_azucar = fields.Boolean(string='Sin azucar')
-    es_non_gmo = fields.Boolean(string='NON GMO')
     
     image_url = fields.Char(string='Imagen URL')
     image_1920 = fields.Binary(string='Image')
