@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-
+'''
 class PartnerProductFavorite(models.Model):
     _name = 'partner.product.favorite'
     _description = 'Productos favoritos de un cliente'
@@ -8,3 +8,4 @@ class PartnerProductFavorite(models.Model):
     product_id = fields.Many2one('product.template', 'Producto', required=True)
 
     is_favorite = fields.Boolean('Favorito')
+'''

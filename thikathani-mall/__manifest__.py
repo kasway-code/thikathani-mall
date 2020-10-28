@@ -30,10 +30,6 @@
         'security/ir.model.access.csv',
     ],
 
-    'demo': [
-        'demo/demo.xml',
-    ],
-
     'application': True,
     'installable': True,
 }
