@@ -2,7 +2,7 @@ from odoo import models, fields, api
 
 class ProductProperty(models.Model):
     _name = 'product.property'
-    _inherit = 'product.category'
+    #_inherit = 'product.category'
     
     # Cambiar a ProductProperty
     #name = fields.Char('Nombre', required=True)
