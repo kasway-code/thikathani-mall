@@ -17,10 +17,12 @@
                             <field name="sku" />
                         </group>
                         <group name="column_two_more_info_product">
-                            <field name="property_ids"  widget="many2many">
+                            <field name="property_line_ids"  widget="many2many">
                                 <tree string="Propiedades del producto" editable="bottom">
                                     <field name="id" string="Propiedad" required="1"/>
+                                    <!-- 
                                     <field name="property_image" widget="image" class="oe_avatar" />
+                                    -->
                                 </tree>
                             </field>
                         </group>
