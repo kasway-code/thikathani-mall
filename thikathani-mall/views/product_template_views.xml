@@ -17,13 +17,13 @@
                             <field name="sku" />
                         </group>
                         <group name="column_two_more_info_product">
-                            <field name="property_ids">
-                              <tree string="Propiedades del producto">
+                            <field name="property_ids" widget="one2many">
+                              <tree string="Propiedades del producto" editable="bottom">
                                 <field name="name"/>
-                                <field name="property_image" widget="image"/>
+                                <field name="property_image" widget="image" class="oe_avatar"/>
                               </tree>
                             </field>
-                            <field name="website_message_ids"/>
+                            
                           </group>         
                     </page>
                 </xpath>
