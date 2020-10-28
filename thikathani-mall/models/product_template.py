@@ -10,7 +10,7 @@ class ProductTemplate(models.Model):
     descripcion_origen = fields.Text('Descripción y Origen')
     descripcion_beneficios = fields.Text('Beneficios')
     descripcion_usos = fields.Text('Modos de uso')
-
+    # step_ids = fields.One2many(related='template_id.step_ids', string = "Steps") 
     brand_id = fields.Many2one('product.brand', string='Marca')
     type_id = fields.Many2one('product.type', string='Tipo')
     sku = fields.Char(string='SKU', compute='get_sku')
@@ -19,6 +19,12 @@ class ProductTemplate(models.Model):
         string='Propiedades',
         comodel_name='product.property',
         inverse_name='id',
+    )
+
+    property_images = fields.One2many(
+        string='Iconos de propiedades',
+        comodel_name='product.property',
+        inverse_name='property_image',
     )
 
     image_url = fields.Char(string='Imagen URL')
