@@ -2,6 +2,7 @@ from odoo import models, fields, api
 
 class ProductProperty(models.Model):
     _name = 'product.property'
+    property_image = fields.Binary("Image")
     #_inherit = 'product.category'
     
     # Cambiar a ProductProperty

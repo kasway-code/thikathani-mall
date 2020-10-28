@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <record id="view_product_property" model="ir.ui.view">
+            <field name="name">product.property</field>
+            <field name="model">product.property</field>
+            <field name="inherit_id" ref="product.product_template_form_view" />
+            <field name="arch" type="xml">
+                <field name="property_image" widget="image" class="oe_avatar" />
+            </field>
+        </record>
+    </data>
+</odoo>
