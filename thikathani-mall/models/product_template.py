@@ -14,6 +14,14 @@ class ProductTemplate(models.Model):
     type_id = fields.Many2one('product.type',string='Tipo')
     sku = fields.Char(string='SKU', compute='get_sku')
     
+    
+    #property_ids = fields.One2many(
+    #    string='Propiedades',
+    #    comodel_name='product.property',
+    #    inverse_name='id',
+    #)
+    
+
     image_url = fields.Char(string='Imagen URL')
     image_1920 = fields.Binary(string='Image')
 
