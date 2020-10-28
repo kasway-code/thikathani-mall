@@ -18,13 +18,12 @@
                         </group>
                         <group name="column_two_more_info_product">
                             <field name="property_ids" widget="one2many">
-                              <tree string="Propiedades del producto" editable="bottom">
-                                <field name="name"/>
-                                <field name="property_image" widget="image" class="oe_avatar"/>
-                              </tree>
+                                <tree string="Propiedades del producto" editable="bottom">
+                                    <field name="property_id" />
+                                    <field name="property_image" widget="image" class="oe_avatar" />
+                                </tree>
                             </field>
-                            
-                          </group>         
+                        </group>
                     </page>
                 </xpath>
             </field>
