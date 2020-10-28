@@ -21,20 +21,21 @@ class Warehouse(models.Model):
     warehouse_image = fields.Binary(string='Image')
     image_url = fields.Char(string='Imagen URL')
 
+    odoo_image_url = fields.Char(string='Odoo Imagen URL')
     
     @api.onchange('image_url')
     def _onchage_image_url(self):
         if self.image_url != False and self.image_url != "":
-            self.image = base64.b64encode(requests.get(self.image_url).content)
+            self.warehouse_image = base64.b64encode(requests.get(self.image_url).content)
         else:
-            self.image = False
+            self.warehouse_image = False
     
     @api.onchange('warehouse_image')
     def _onchage_image(self):
         if self.warehouse_image != False and self.warehouse_image != "":
-            self.image_url = f'/web/image/stock.warehouse/{id}/warehouse_image'
+            self.odoo_image_url = f'/web/image/stock.warehouse/{self.id}/warehouse_image'
         else:
-            self.image_url = False
+            self.odoo_image_url = False
 
 
     #state = fields.Many2one(
