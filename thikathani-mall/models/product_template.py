@@ -37,7 +37,7 @@ class ProductTemplate(models.Model):
         for record in self:
             record['sku'] = f'{record.categ_id.internal_code}-{record.brand_id.internal_code}-record.product_id.x_consumption_rate'
             #record.property_list = self.env["product.template.property.line"]
-            record.property_list = record.property_line_ids.browse(record.property_line_ids).read(['property_image'])
+            record.property_list = record.property_line_ids.read(['property_image'])
             '''record.property_list = [
             {
                 "id": 1,
