@@ -34,7 +34,7 @@ class Warehouse(models.Model):
     def _compute_odoo_image_url(self):
         web_base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         for record in self:
-            record.odoo_image_url = self.odoo_image_url = f'{web_base_url}/web/image/stock.warehouse/{self.id}/warehouse_image'
+            record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/stock.warehouse/{self.id}/warehouse_image'
 
 
     #state = fields.Many2one(
