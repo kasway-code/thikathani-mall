@@ -34,6 +34,7 @@ class ProductTemplate(models.Model):
     @api.onchange('brand_id')
     def _compute_sku(self):
         for record in self:
+            record['is_published'] = True
             record['sku'] = f'{record.categ_id.internal_code}-{record.brand_id.internal_code}-record.product_id.x_consumption_rate'
             #record.property_list = self.env["product.template.property.line"]
             #record.property_list = record.property_line_ids.read(['property_image'])
