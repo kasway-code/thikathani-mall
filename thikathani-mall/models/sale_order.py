@@ -14,6 +14,8 @@ class SaleOrder(models.Model):
     @api.onchange('numero_guia')
     def _compute_product_tmpl_list(self):
         for record in self:
+            record.product_tmpl_list = self.env['product.template'].search_read([('id','=',record.id)])
+            '''
             record.product_tmpl_list = [
                 {
                     "id": 8,
@@ -76,3 +78,4 @@ class SaleOrder(models.Model):
                     ]
                 }
             ]
+            '''
