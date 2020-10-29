@@ -37,7 +37,7 @@
                         </group>
                         <notebook>
                             <page string="Productos">
-                                <field name="members_ids" widget="many2many" options="{'not_delete': True}">
+                                <field name="product_tmpl_ids" widget="many2many" options="{'not_delete': True}">
                                     <kanban quick_create="false" create="true" delete="true">
                                         <field name="id" />
                                         <field name="name" />

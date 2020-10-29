@@ -12,7 +12,7 @@ class ProductTemplate(models.Model):
     descripcion_usos = fields.Text(string='Modos de uso')
     # step_ids = fields.One2many(related='template_id.step_ids', string = "Steps") 
 
-    brand_id = fields.Many2one(string='Marca','product.brand')
+    brand_id = fields.Many2one(string='Marca',comodel = 'product.brand')
     brand_name = fields.Char(string='Nombre de la marca', related='brand_id.name', readonly=True)
  
     sku = fields.Char(string='SKU', compute='_compute_sku')
