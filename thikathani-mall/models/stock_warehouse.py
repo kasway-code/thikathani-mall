@@ -32,8 +32,8 @@ class Warehouse(models.Model):
     
     @api.onchange('warehouse_image')
     def _onchage_image(self):
-        if self.warehouse_image != False and self.warehouse_image != "":
-            self.odoo_image_url = "/web/image/stock.warehouse//warehouse_image"
+        if self.warehouse_image != False:
+            self.odoo_image_url = f'/web/image/stock.warehouse/{self.id}/warehouse_image'
         else:
             self.odoo_image_url = False
 
