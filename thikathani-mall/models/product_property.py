@@ -34,8 +34,9 @@ class ProductProperty(models.Model):
         inverse_name='property_id',
     )
 
-    image_url = fields.Char(string='Imagen URL')
     property_image = fields.Binary(string='Image')
+    image_url = fields.Char(string='Imagen URL')
+    odoo_image_url = fields.Char(string='Odoo Imagen URL', compute='_compute_odoo_image_url')
 
     @api.onchange('image_url')
     def _onchange_image_url(self):
@@ -71,6 +72,11 @@ class ProductProperty(models.Model):
                 _("You cannot delete this product property, it is the default generic property."))
         return super().unlink()
 
+    @api.depends('warehouse_image')
+    def _compute_odoo_image_url(self):
+        web_base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
+        for record in self:
+            record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/stock.warehouse/{record.id}/warehouse_image'
 
 class ProductPropertyLine(models.Model):
     _name = "product.template.property.line"

@@ -20,7 +20,6 @@ class Warehouse(models.Model):
 
     warehouse_image = fields.Binary(string='Image')
     image_url = fields.Char(string='Imagen URL')
-
     odoo_image_url = fields.Char(string='Odoo Imagen URL', compute='_compute_odoo_image_url' )
     
     @api.onchange('image_url')
@@ -35,10 +34,3 @@ class Warehouse(models.Model):
         web_base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         for record in self:
             record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/stock.warehouse/{record.id}/warehouse_image'
-
-
-    #state = fields.Many2one(
-    #    'State', related='partner_id.state_id', readonly=True, store=True)
-    #country = fields.Many2one('Country', related='partner_id.country_id', readonly=True, store=True)
-    # district = fields.Char('District', related='partner_id.l10n_pe_district', readonly=True)
-    # image_url =
