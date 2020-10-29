@@ -37,7 +37,7 @@ class ProductTemplate(models.Model):
         for record in self:
             record['sku'] = f'{record.categ_id.internal_code}-{record.brand_id.internal_code}-record.product_id.x_consumption_rate'
 
-    def _compute_property_list(self):
+    def _compute_property_list(self, ids):
         for record in self:
             record.property_list = [
                 {
