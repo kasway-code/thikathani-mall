@@ -30,7 +30,7 @@ class ProductProperty(models.Model):
 
     property_image = fields.Binary(string='Image')
     image_url = fields.Char(string='Imagen URL')
-    odoo_image_url = fields.Char(string='Odoo Imagen URL', compute='_compute_odoo_image_url')
+    odoo_image_url = fields.Char(string='Odoo Imagen URL', compute='_compute_odoo_image_url',store=True)
 
     @api.onchange('image_url')
     def _onchange_image_url(self):
