@@ -1,19 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="product_property_form_view" model="ir.ui.view">
+        <record id="product_template_property_form_view" model="ir.ui.view">
             <field name="name">product.property.form</field>
             <field name="model">product.property</field>
             <field name="arch" type="xml">
                 <form class="oe_form_configuration">
                     <sheet>
                         <div class="oe_title">
-                            <label for="name" string="Property name" class="oe_edit_only"/>
-                            <h1><field name="name" placeholder="e.g. Lamps"/></h1>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                            <field name="property_image" widget="image" class="oe_avatar oe_right" />
                         </div>
+                        
+                        <group name="first" col="2">
+                            <field name="parent_id" class="oe_inline" />
+                            <field name="image_url" />
+                        </group>
                     </sheet>
                 </form>
             </field>
         </record>
 
+        <record id="product_template_property_action" model="ir.actions.act_window">
+            <field name="name">Propiedades de productos</field>
+            <field name="res_model">product.property</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="product_template_property_inventory" name="Propiedades de productos" action="product_template_property_action" parent="stock.menu_stock_inventory_control" sequence="1" />
     </data>
 </odoo>
