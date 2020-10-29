@@ -24,9 +24,8 @@ class ProductTemplate(models.Model):
         inverse_name='product_tmpl_id',
     )
 
-    #property_list = fields.One2many(
-    #    string='Property List', comodel_name='product.template.property.line', inverse_name='product_tmpl_id', compute= '_compute_sku')
-    property_list = []
+    property_list = fields.One2many(string='Property List', comodel_name='product.template.property.line', inverse_name='product_tmpl_id', compute= '_compute_sku')
+    #property_list = []
     image_url = fields.Char(string='Imagen URL')
     image_1920 = fields.Binary(string='Image')
     odoo_image_url = fields.Char(
@@ -37,8 +36,8 @@ class ProductTemplate(models.Model):
         for record in self:
             record['sku'] = f'{record.categ_id.internal_code}-{record.brand_id.internal_code}-record.product_id.x_consumption_rate'
             #record.property_list = self.env["product.template.property.line"]
-            record.property_list = record.property_line_ids.read(['property_image'])
-            '''record.property_list = [
+            #record.property_list = record.property_line_ids.read(['property_image'])
+            record.property_list = [
             {
                 "id": 1,
                 "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/1/property_image"
@@ -51,7 +50,7 @@ class ProductTemplate(models.Model):
                 "id": 3,
                 "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/3/property_image"
             }
-        ]'''
+        ]
 
     @api.onchange('image_url')
     def _onchange_image_url(self):
