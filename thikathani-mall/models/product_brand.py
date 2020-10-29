@@ -24,9 +24,9 @@ class BrandProduct(models.Model):
         else:
             self.brand_image = False
 
-    @api.depends('members_ids')
+    @api.depends('product_tmpl_ids')
     def get_count_members(self):
-        self.product_count = len(self.members_ids)
+        self.product_count = len(self.product_tmpl_ids)
 
     @api.depends('brand_image')
     def _compute_odoo_image_url(self):
