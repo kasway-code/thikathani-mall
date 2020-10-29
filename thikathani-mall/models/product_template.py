@@ -32,6 +32,7 @@ class ProductTemplate(models.Model):
     odoo_image_url = fields.Char(
         string='Odoo Imagen URL', compute='_compute_odoo_image_url')
 
+    @api.one
     @api.depends('sku')
     def _compute_sku(self):
         for record in self:
