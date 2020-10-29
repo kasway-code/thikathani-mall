@@ -36,7 +36,7 @@ class ProductTemplate(models.Model):
     def _compute_sku(self):
         for record in self:
             record['sku'] = f'{record.categ_id.internal_code}-{record.brand_id.internal_code}-record.product_id.x_consumption_rate'
-            record.property_list = self.env["product.template.property.line"].browse(property_line_ids).read([])
+            record.property_list = self.env["product.template.property.line"].browse(record.property_line_ids).read([])
             '''record.property_list = [
             {
                 "id": 1,
