@@ -9,7 +9,7 @@ class SaleOrder(models.Model):
 
     numero_guia = fields.Char(string='Numero de guia')
     product_tmpl_list = fields.One2many(
-        string='Lista de productos', comodel_name='product.template', inverse_name='product_tmpl_id', compute='_compute_product_tmpl_list')
+        string='Lista de productos', comodel_name='sale.order.line', inverse_name='order_id', compute='_compute_product_tmpl_list')
 
     @api.onchange('numero_guia')
     def _compute_product_tmpl_list(self):
