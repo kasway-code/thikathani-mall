@@ -6,10 +6,10 @@ from odoo import models, fields, api
 
 class BrandProduct(models.Model):
     _name = 'product.brand'
-    name = fields.Char(string = "Nombre de la marca")
+    name = fields.Char(string="Nombre de la marca")
 
     product_tmpl_ids = fields.One2many(string='Productos',
-        comodel='product.template', inverse_name='brand_id')
+                                       comodel_name='product.template', inverse_name='brand_id')
     product_count = fields.Char(
         string="Cantidad", compute='get_count_members', store=True)
 
