@@ -30,10 +30,6 @@ class ProductTemplate(models.Model):
     image_url = fields.Char(string='Imagen URL')
     image_1920 = fields.Binary(string='Image')
     odoo_image_url = fields.Char(string='Odoo Imagen URL', compute='_compute_odoo_image_url')
-    
-    def _compute_property_list(self):
-        for record in self:
-            record.property_list = [(0,0,{'month_name_id':1,'so_qty':35, 'month_id' : record.id})]
             #[
                 #{
                 #"id": 4,
@@ -55,6 +51,10 @@ class ProductTemplate(models.Model):
                 requests.get(self.image_url).content)
         else:
             self.image_1920 = False
+            
+    def _compute_property_list(self):
+        for record in self:
+            record.property_list = [(0,0,{'month_name_id':1,'so_qty':35, 'month_id' : record.id})]
 
     @api.depends('image_1920')
     def _compute_odoo_image_url(self):
