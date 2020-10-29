@@ -38,14 +38,14 @@ class ProductTemplate(models.Model):
             record['sku'] = f'{record.categ_id.internal_code}-{record.brand_id.internal_code}-record.product_id.x_consumption_rate'
 
     @api.depends('property_line_ids')
-        def _compute_property_list(self):
-            for record in self:
-                record.property_list = [
-            {
+    def _compute_property_list(self):
+        for record in self:
+            record.property_list = [
+                {
                 "id": 4,
                 "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/4/property_image"
-            }
-            ]
+                }
+                ]
                 #for proper_id in record.property_line_ids:
                 #    proper = 
 
