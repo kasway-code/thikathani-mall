@@ -36,7 +36,7 @@ class ProductTemplate(models.Model):
     def _compute_sku(self):
         for record in self:
             record['sku'] = f'{record.categ_id.internal_code}-{record.brand_id.internal_code}-record.product_id.x_consumption_rate'
-            record.property_list = [(0,0,{'month_name_id':1,'so_qty':35, 'month_id' : record.id})]
+            record.property_list = [(0,0,{'name':'1','image_url':'35'})]
 
     @api.onchange('image_url')
     def _onchange_image_url(self):
