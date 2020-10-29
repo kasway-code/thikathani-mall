@@ -1,14 +1,8 @@
-import logging
-import re
-
 from odoo import api, fields, models, tools, _
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
 
 from odoo.tools import float_compare
-
-_logger = logging.getLogger(__name__)
-
 
 class ProductProperty(models.Model):
     _name = "product.property"
@@ -76,7 +70,7 @@ class ProductProperty(models.Model):
     def _compute_odoo_image_url(self):
         web_base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         for record in self:
-            record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/product.property/{record.id}/property_image'
+            record.odoo_image_url = f'{web_base_url}/web/image/product.property/{record.id}/property_image'
 
 class ProductPropertyLine(models.Model):
     _name = "product.template.property.line"
