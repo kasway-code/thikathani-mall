@@ -16,15 +16,63 @@ class SaleOrder(models.Model):
         for record in self:
             record.product_tmpl_list = [
                 {
-                    "id": 1,
-                    "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/1/property_image"
+                    "id": 8,
+                    "name": "AGUA ALCALINA 250ML ALKA+",
+                    "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.template/8/image_1920",
+                    "price": 0.0,
+                    "property_list": [
+                        {
+                            "id": 1,
+                            "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/1/property_image"
+                        },
+                        {
+                            "id": 2,
+                            "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/2/property_image"
+                        },
+                        {
+                            "id": 3,
+                            "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/3/property_image"
+                        }
+                    ]
+                },
+                {
+                    "id": 13,
+                    "name": "Desk Organizer",
+                    "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.template/13/image_1920",
+                    "price": 0.0,
+                    "property_list": [
+                        {
+                            "id": 1,
+                            "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/1/property_image"
+                        },
+                        {
+                            "id": 2,
+                            "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/2/property_image"
+                        },
+                        {
+                            "id": 3,
+                            "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/3/property_image"
+                        }
+                    ]
                 },
                 {
                     "id": 2,
-                    "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/2/property_image"
-                },
-                {
-                    "id": 3,
-                    "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/3/property_image"
+                    "name": "Discount",
+                    "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.template/2/image_1920",
+                    "price": 0.0,
+                    "property_list": [
+                        {
+                            "id": 1,
+                            "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/1/property_image"
+                        },
+                        {
+                            "id": 2,
+                            "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/2/property_image"
+                        },
+                        {
+                            "id": 3,
+                            "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/3/property_image"
+                        }
+                    ]
                 }
             ]
