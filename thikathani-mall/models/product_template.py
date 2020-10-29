@@ -23,6 +23,7 @@ class ProductTemplate(models.Model):
         comodel_name='product.template.property.line',
         inverse_name='product_tmpl_id',
     )
+
     property_list = []
 
     image_url = fields.Char(string='Imagen URL')
@@ -33,7 +34,7 @@ class ProductTemplate(models.Model):
     @api.depends('sku')
     def _compute_sku(self):
         for record in self:
-            record['sku'] = f'{record.categ_id.id}-{record.brand_id.id}-record.product_id.x_consumption_rate'
+            record['sku'] = f'{record.categ_id.internal_code}-{record.brand_id.internal_code}-record.product_id.x_consumption_rate'
 
     @api.onchange('image_url')
     def _onchange_image_url(self):

@@ -32,6 +32,7 @@
                             <div name="options_active" />
                         </div>
                         <group>
+                            <field name="internal_code" />
                             <field name="image_url"/>
                             <field name="product_count"/>
                         </group>
