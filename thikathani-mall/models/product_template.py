@@ -32,8 +32,7 @@ class ProductTemplate(models.Model):
     odoo_image_url = fields.Char(
         string='Odoo Imagen URL', compute='_compute_odoo_image_url')
 
-    @api.one
-    @api.depends('sku')
+    @api.depends('brand_id')
     def _compute_sku(self):
         for record in self:
             record['sku'] = f'{record.categ_id.internal_code}-{record.brand_id.internal_code}-record.product_id.x_consumption_rate'
