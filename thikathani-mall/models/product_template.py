@@ -25,7 +25,7 @@ class ProductTemplate(models.Model):
     )
 
     property_list = fields.One2many(string='Property List', comodel_name='product.template.property.line',
-                                    inverse_name='product_tmpl_id', compute='_compute_sku',store=True)
+                                    inverse_name='product_tmpl_id', compute='_compute_sku', store=True)
     #property_list = fields.One2many(string='Property List')
     image_url = fields.Char(string='Imagen URL')
     image_1920 = fields.Binary(string='Image')
