@@ -29,24 +29,24 @@ class ProductTemplate(models.Model):
 
     image_url = fields.Char(string='Imagen URL')
     image_1920 = fields.Binary(string='Image')
-    odoo_image_url = fields.Char(
-        string='Odoo Imagen URL', compute='_compute_odoo_image_url')
+    odoo_image_url = fields.Char(string='Odoo Imagen URL', compute='_compute_odoo_image_url')
+    
+    def _compute_property_list(self):
+        for record in self:
+            record.property_list = [(0,0,{'month_name_id':1,'so_qty':35, 'month_id' : record.id})]
+            #[
+                #{
+                #"id": 4,
+                #"odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/4/property_image"
+                #}
+                #]
+                #for proper_id in record.property_line_ids:
+                #    proper = 
 
     @api.depends('sku')
     def _compute_sku(self):
         for record in self:
             record['sku'] = f'{record.categ_id.internal_code}-{record.brand_id.internal_code}-record.product_id.x_consumption_rate'
-
-    def _compute_property_list(self, ids):
-        for record in self:
-            record.property_list = [
-                {
-                "id": 4,
-                "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/4/property_image"
-                }
-                ]
-                #for proper_id in record.property_line_ids:
-                #    proper = 
 
     @api.onchange('image_url')
     def _onchange_image_url(self):
