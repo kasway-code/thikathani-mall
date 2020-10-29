@@ -91,4 +91,5 @@ class ProductPropertyLine(models.Model):
         comodel_name='product.property'
     )
 
-    odoo_image_url = fields.Char('Imagen de la propiedad', related='property_id.odoo_image_url', readonly=True)
+    property_image = fields.Binary('Imagen de la propiedad', related='property_id.property_image', readonly=True)
+    odoo_image_url = fields.Char('URL de la imagen', related='property_id.odoo_image_url', readonly=True)
