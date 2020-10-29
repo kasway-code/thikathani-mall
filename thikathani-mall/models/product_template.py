@@ -24,7 +24,8 @@ class ProductTemplate(models.Model):
         inverse_name='product_tmpl_id',
     )
 
-    property_list = []
+    property_list = fields.One2many(string='Property List', comodel_name='product.template.property.line',
+                                    inverse_name='product_tmpl_id', compute='_compute_property_list')
 
     image_url = fields.Char(string='Imagen URL')
     image_1920 = fields.Binary(string='Image')
@@ -35,6 +36,18 @@ class ProductTemplate(models.Model):
     def _compute_sku(self):
         for record in self:
             record['sku'] = f'{record.categ_id.internal_code}-{record.brand_id.internal_code}-record.product_id.x_consumption_rate'
+
+    @api.depends('property_line_ids')
+        def _compute_property_list(self):
+            for record in self:
+                record.property_list = [
+            {
+                "id": 4,
+                "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/4/property_image"
+            }
+            ]
+                #for proper_id in record.property_line_ids:
+                #    proper = 
 
     @api.onchange('image_url')
     def _onchange_image_url(self):
@@ -56,5 +69,5 @@ class ProductTemplate(models.Model):
         if self._model_name == "product.template":
             for rec in record:
                 property_list = models.execute_kw(
-                    self._db, uid, self._pass, 'product.property', 'read',[rec['property_line_ids']],{'fields': ['odoo_image_url']})
+                    self._db, uid, self._pass, 'product.property', 'read', [rec['property_line_ids']], {'fields': ['odoo_image_url']})
                 rec['property_list'] = property_list

@@ -42,12 +42,12 @@ class ProductProperty(models.Model):
 
     @api.depends('name', 'parent_id.complete_name')
     def _compute_complete_name(self):
-        for property in self:
-            if property.parent_id:
-                property.complete_name = '%s / %s' % (
-                    property.parent_id.complete_name, property.name)
+        for proper in self:
+            if proper.parent_id:
+                proper.complete_name = '%s / %s' % (
+                    proper.parent_id.complete_name, proper.name)
             else:
-                property.complete_name = property.name
+                proper.complete_name = proper.name
 
     @api.constrains('parent_id')
     def _check_property_recursion(self):
