@@ -59,13 +59,6 @@ class ProductProperty(models.Model):
     def name_create(self, name):
         return self.create({'name': name}).name_get()[0]
 
-    def unlink(self):
-        main_property = self.env.ref('product.product_property_all')
-        if main_property in self:
-            raise UserError(
-                _("You cannot delete this product property, it is the default generic property."))
-        return super().unlink()
-
     @api.depends('property_image')
     def _compute_odoo_image_url(self):
         web_base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')

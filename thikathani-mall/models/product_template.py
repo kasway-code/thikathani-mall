@@ -7,14 +7,15 @@ from odoo import models, fields, api
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    descripcion_origen = fields.Text('Descripción y Origen')
-    descripcion_beneficios = fields.Text('Beneficios')
-    descripcion_usos = fields.Text('Modos de uso')
+    descripcion_origen = fields.Text(string='Descripción y Origen')
+    descripcion_beneficios = fields.Text(string='Beneficios')
+    descripcion_usos = fields.Text(string='Modos de uso')
     # step_ids = fields.One2many(related='template_id.step_ids', string = "Steps") 
-    brand_id = fields.Many2one('product.brand', string='Marca')
-    brand_name = fields.Char('Nombre de la marca', related='brand_id.name', readonly=True)
-    type_id = fields.Many2one('product.type', string='Tipo')
-    sku = fields.Char(string='SKU', compute='get_sku')
+
+    brand_id = fields.Many2one(string='Marca','product.brand')
+    brand_name = fields.Char(string='Nombre de la marca', related='brand_id.name', readonly=True)
+ 
+    sku = fields.Char(string='SKU', compute='_compute_sku')
 
     property_line_ids = fields.One2many(
         string='Property Line',
@@ -27,8 +28,9 @@ class ProductTemplate(models.Model):
     odoo_image_url = fields.Char(string='Odoo Imagen URL', compute='_compute_odoo_image_url' )
 
     @api.depends('sku')
-    def get_sku(self):
-        self.sku = str(self.brand_id) + "test"
+    def _compute_sku(self):
+        for record in self:
+            record['sku'] = f'{record.categ_id}-{record.brand_id}-record.product_id.x_consumption_rate'
 
     @api.onchange('image_url')
     def _onchange_image_url(self):
