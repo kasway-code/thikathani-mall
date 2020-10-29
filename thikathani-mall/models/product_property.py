@@ -72,11 +72,11 @@ class ProductProperty(models.Model):
                 _("You cannot delete this product property, it is the default generic property."))
         return super().unlink()
 
-    @api.depends('warehouse_image')
+    @api.depends('property_image')
     def _compute_odoo_image_url(self):
         web_base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         for record in self:
-            record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/stock.warehouse/{record.id}/warehouse_image'
+            record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/product.property/{record.id}/property_image'
 
 class ProductPropertyLine(models.Model):
     _name = "product.template.property.line"

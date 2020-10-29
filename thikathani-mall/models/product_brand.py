@@ -27,11 +27,11 @@ class BrandProduct(models.Model):
     def get_count_members(self):
         self.product_count = len(self.members_ids)
     
-    @api.depends('warehouse_image')
+    @api.depends('brand_image')
     def _compute_odoo_image_url(self):
         web_base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         for record in self:
-            record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/stock.warehouse/{record.id}/warehouse_image'
+            record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/product.brand/{record.id}/brand_image'
 
 class BrandReportStock(models.Model):
     _inherit = 'stock.quant'

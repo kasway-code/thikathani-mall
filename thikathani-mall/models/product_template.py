@@ -25,7 +25,7 @@ class ProductTemplate(models.Model):
     image_url = fields.Char(string='Imagen URL')
     image_1920 = fields.Binary(string='Image')
     odoo_image_url = fields.Char(string='Odoo Imagen URL', compute='_compute_odoo_image_url' )
-    
+
     @api.depends('sku')
     def get_sku(self):
         self.sku = str(self.brand_id) + "test"
@@ -38,8 +38,8 @@ class ProductTemplate(models.Model):
         else:
             self.image_1920 = False
     
-    @api.depends('warehouse_image')
+    @api.depends('image_1920')
     def _compute_odoo_image_url(self):
         web_base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         for record in self:
-            record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/stock.warehouse/{record.id}/warehouse_image'
+            record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/product.template/{record.id}/image_1920'
