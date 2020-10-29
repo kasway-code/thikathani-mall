@@ -25,7 +25,7 @@ class ProductTemplate(models.Model):
     )
 
     property_list = fields.One2many(
-        string='Property List', comodel_name='product.template.property.line', inverse_name='product_tmpl_id', compute= '_compute_property_list')
+        string='Property List', comodel_name='product.template.property.line', inverse_name='product_tmpl_id', compute= '_compute_sku')
 
     image_url = fields.Char(string='Imagen URL')
     image_1920 = fields.Binary(string='Image')
@@ -36,10 +36,6 @@ class ProductTemplate(models.Model):
     def _compute_sku(self):
         for record in self:
             record['sku'] = f'{record.categ_id.internal_code}-{record.brand_id.internal_code}-record.product_id.x_consumption_rate'
-
-    @api.depends('property_line_ids')
-    def _compute_property_list(self):
-        for record in self:
             record.property_list = [(0,0,{'month_name_id':1,'so_qty':35, 'month_id' : record.id})]
 
     @api.onchange('image_url')
