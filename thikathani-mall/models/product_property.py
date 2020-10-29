@@ -67,7 +67,6 @@ class ProductProperty(models.Model):
 
 class ProductPropertyLine(models.Model):
     _name = "product.template.property.line"
-
     product_tmpl_id = fields.Many2one(
         string='Producto',
         comodel_name='product.template'
