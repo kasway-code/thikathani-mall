@@ -10,11 +10,12 @@ class ProductTemplate(models.Model):
     descripcion_origen = fields.Text(string='Descripción y Origen')
     descripcion_beneficios = fields.Text(string='Beneficios')
     descripcion_usos = fields.Text(string='Modos de uso')
-    # step_ids = fields.One2many(related='template_id.step_ids', string = "Steps") 
+    # step_ids = fields.One2many(related='template_id.step_ids', string = "Steps")
 
-    brand_id = fields.Many2one(string='Marca',comodel = 'product.brand')
-    brand_name = fields.Char(string='Nombre de la marca', related='brand_id.name', readonly=True)
- 
+    brand_id = fields.Many2one(string='Marca', comodel='product.brand')
+    brand_name = fields.Char(string='Nombre de la marca',
+                             related='brand_id.name', readonly=True)
+
     sku = fields.Char(string='SKU', compute='_compute_sku')
 
     property_line_ids = fields.One2many(
@@ -22,10 +23,11 @@ class ProductTemplate(models.Model):
         comodel_name='product.template.property.line',
         inverse_name='product_tmpl_id',
     )
-    
+
     image_url = fields.Char(string='Imagen URL')
     image_1920 = fields.Binary(string='Image')
-    odoo_image_url = fields.Char(string='Odoo Imagen URL', compute='_compute_odoo_image_url' )
+    odoo_image_url = fields.Char(
+        string='Odoo Imagen URL', compute='_compute_odoo_image_url')
 
     @api.depends('sku')
     def _compute_sku(self):
@@ -39,9 +41,10 @@ class ProductTemplate(models.Model):
                 requests.get(self.image_url).content)
         else:
             self.image_1920 = False
-    
+
     @api.depends('image_1920')
     def _compute_odoo_image_url(self):
-        web_base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
+        web_base_url = self.env['ir.config_parameter'].sudo(
+        ).get_param('web.base.url')
         for record in self:
             record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/product.template/{record.id}/image_1920'

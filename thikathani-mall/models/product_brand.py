@@ -8,7 +8,7 @@ class BrandProduct(models.Model):
     _name = 'product.brand'
     name = fields.Char("Nombre de la marca")
 
-    product_tmpl_ids = fields.One2many(
+    product_tmpl_ids = fields.One2many(string='Productos',
         comodel='product.template', inverse_name='brand_id')
     product_count = fields.Char(
         string="Cantidad", compute='get_count_members', store=True)
