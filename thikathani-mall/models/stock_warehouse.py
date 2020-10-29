@@ -30,9 +30,7 @@ class Warehouse(models.Model):
         else:
             self.warehouse_image = False
     
-
-    
-    @api.depends('depends')
+    @api.depends('warehouse_image')
     def _compute_odoo_image_url(self):
         web_base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         for record in self:
