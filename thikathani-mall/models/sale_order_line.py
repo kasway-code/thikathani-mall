@@ -21,7 +21,6 @@ class OrderLine(models.Model):
     
     @api.depends()
     def _compute_property_list():
-        if self._model_name == "product.template":
-            for rec in record:
-                product_tmpl_property_ids = self.env['product.template.property.line'].search_read([('product_tmpl_id', '=', rec['product_template_id'].id)], ['odoo_image_url'])
-                record['product_tmpl_property_ids'] = str(json.dumps(product_tmpl_property_ids))
+        for rec in record:
+            product_tmpl_property_ids = self.env['product.template.property.line'].search_read([('product_tmpl_id', '=', rec['product_template_id'].id)], ['odoo_image_url'])
+            record['product_tmpl_property_ids'] = str(json.dumps(product_tmpl_property_ids))
