@@ -10,7 +10,7 @@ class Partner(models.Model):
     district_name = fields.Char(
         'District', related='l10n_pe_district.name', readonly=True)
 
-    age_old = fields.Char(string='Edad')
+    #age_old = fields.Char(string='Edad')
 
     odoo_image_url = fields.Char(
         string='Odoo Imagen URL', compute='_compute_odoo_image_url')
