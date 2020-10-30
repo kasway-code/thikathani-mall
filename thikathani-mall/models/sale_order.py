@@ -9,11 +9,9 @@ class SaleOrder(models.Model):
 
     numero_guia = fields.Char(string='Numero de guia')
 
-
     product_tmpl_list = fields.One2many(
-       string='Lista de productos', comodel_name='sale.order.line', inverse_name='order_id', compute='_compute_product_tmpl_list', store=True)
-    
-    
+        string='Lista de productos', comodel_name='sale.order.line', inverse_name='order_id', compute='_compute_product_tmpl_list', store=True)
+
     #product_tmpl_list = []
 
     product_tmpl_list = fields.Char(
@@ -22,8 +20,8 @@ class SaleOrder(models.Model):
     @api.onchange('numero_guia')
     def _compute_product_tmpl_list(self):
         for record in self:
-            record.product_tmpl_list = str(self.env['sale.order.line'].search_read([('order_id', '=', record.id)]))
-
+            record.product_tmpl_list = str(self.env['sale.order.line'].search_read(
+                [('order_id', '=', record.id)], ['name','price_unit', 'discount']))
 
             '''
             record.product_tmpl_list = [
