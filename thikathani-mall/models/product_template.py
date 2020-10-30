@@ -53,6 +53,7 @@ class ProductTemplate(models.Model):
         for record in self:
             record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/product.template/{record.id}/image_1920'
 
+'''
     @api.depends()
     def _compute_property_list():
         if self._model_name == "product.template":
@@ -60,3 +61,4 @@ class ProductTemplate(models.Model):
                 property_list = models.execute_kw(
                     self._db, uid, self._pass, 'product.property', 'read', [rec['property_line_ids']], {'fields': ['odoo_image_url']})
                 rec['property_list'] = property_list
+'''

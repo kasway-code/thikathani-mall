@@ -23,6 +23,5 @@ class OrderLine(models.Model):
     def _compute_property_list():
         if self._model_name == "product.template":
             for rec in record:
-                property_list = models.execute_kw(
-                    self._db, uid, self._pass, 'product.template.property.line', 'read', [rec['product_template_id'].id], {'fields': ['odoo_image_url']})
-                rec['product_tmpl_property_ids'] = property_list
+                product_tmpl_property_ids = self.env['product.template.property.line'].search_read([('product_tmpl_id', '=', rec['product_template_id'].id)], ['odoo_image_url'])
+                record['product_tmpl_property_ids'] = str(json.dumps(product_tmpl_property_ids))
