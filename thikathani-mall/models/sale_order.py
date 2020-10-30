@@ -19,7 +19,7 @@ class SaleOrder(models.Model):
     def _compute_product_tmpl_list(self):
         for record in self:
             record.product_tmpl_list = str(
-                self.env['product.template'].search_read([('id', '=', record.id)]))
+                self.env['sale.order.line'].search_read([('order_id', '=', record.id)]))
             '''
             record.product_tmpl_list = [
                 {
