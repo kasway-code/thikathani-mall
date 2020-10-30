@@ -21,8 +21,7 @@ class SaleOrder(models.Model):
     @api.onchange('numero_guia')
     def _compute_product_tmpl_list(self):
         for record in self:
-            record.product_tmpl_list = str(json.load(self.env['sale.order.line'].search_read(
-                [('order_id', '=', record.id)], ['name','price_unit', 'discount'])))
+            record.product_tmpl_list = str(json.load(self.env['sale.order.line'].search_read([('order_id', '=', record.id)], ['name','price_unit', 'discount'])))
 
             '''
             record.product_tmpl_list = [
