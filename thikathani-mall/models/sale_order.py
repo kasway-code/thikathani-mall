@@ -8,9 +8,9 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     numero_guia = fields.Char(string='Numero de guia')
-    product_tmpl_list = fields.One2many(
-        string='Lista de productos', comodel_name='sale.order.line', inverse_name='order_id', compute='_compute_product_tmpl_list', store=True)
-
+    #product_tmpl_list = fields.One2many(
+    #    string='Lista de productos', comodel_name='sale.order.line', inverse_name='order_id', compute='_compute_product_tmpl_list', store=True)
+    product_tmpl_list = []
     # product_tmpl_list = fields.Char(
     #    string='Lista de productos', compute='_compute_product_tmpl_list'
     # )
