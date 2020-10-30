@@ -9,9 +9,8 @@ class Partner(models.Model):
     state_name = fields.Char('State', related='state_id.name', readonly=True)
     district_name = fields.Char(
         'District', related='l10n_pe_district.name', readonly=True)
-        
-    age = fields.Integer(
-        string='Edad')
+
+    age = fields.Integer(string='Edad')
 
     odoo_image_url = fields.Char(
         string='Odoo Imagen URL', compute='_compute_odoo_image_url')
