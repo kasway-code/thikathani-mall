@@ -10,7 +10,7 @@ class Partner(models.Model):
     district_name = fields.Char(
         'District', related='l10n_pe_district.name', readonly=True)
 
-    age = fields.Integer(string='Edad')
+    #age = fields.Integer(string='Edad')
 
     odoo_image_url = fields.Char(
         string='Odoo Imagen URL', compute='_compute_odoo_image_url')
@@ -24,7 +24,6 @@ class Partner(models.Model):
 
     @api.depends('image_1920')
     def _compute_odoo_image_url(self):
-        web_base_url = self.env['ir.config_parameter'].sudo(
-        ).get_param('web.base.url')
+        web_base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         for record in self:
             record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/res.partner/{record.id}/image_1920'
