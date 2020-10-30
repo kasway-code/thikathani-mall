@@ -36,23 +36,7 @@ class ProductTemplate(models.Model):
     def _compute_sku(self):
         for record in self:
             record['sku'] = f'{record.categ_id.internal_code}-{record.brand_id.internal_code}-record.product_id.x_consumption_rate'
-            #record.property_list = self.env["product.template.property.line"]
             #record.property_list = record.property_line_ids.read(['property_image'])
-            '''
-            record.property_list = [
-                {
-                    "id": 1,
-                    "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/1/property_image"
-                },
-                {
-                    "id": 2,
-                    "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/2/property_image"
-                },
-                {
-                    "id": 3,
-                    "odoo_image_url": "https://kasway-code-thikathani-mall-mall-1581943.dev.odoo.com/web/image/product.property/3/property_image"
-                }
-            ]'''
 
     @api.onchange('image_url')
     def _onchange_image_url(self):
