@@ -14,9 +14,9 @@ class OrderLine(models.Model):
     #    comodel_name='product.template'
     #)
 
-    product_tmpl_property_ids =  fields.Many2many(
+    product_tmpl_property_ids =  fields.Char(
         string='Propiedades de productos',
-        comodel_name='product.property'
+        compute='_compute_property_list'
     )
     
     @api.depends('product_id')
