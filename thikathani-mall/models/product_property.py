@@ -68,7 +68,7 @@ class ProductProperty(models.Model):
         for record in self:
             record.odoo_image_url = f'{web_base_url}/web/image/product.property/{record.id}/property_image'
 
-
+'''
 class ProductPropertyLine(models.Model):
     _name = "product.template.property.line"
     product_tmpl_id = fields.Many2one(
@@ -87,3 +87,4 @@ class ProductPropertyLine(models.Model):
         'Imagen de la propiedad', related='property_id.property_image', readonly=True)
     odoo_image_url = fields.Char(
         'URL de la imagen', related='property_id.odoo_image_url', readonly=True)
+'''

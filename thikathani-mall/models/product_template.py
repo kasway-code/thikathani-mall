@@ -18,12 +18,20 @@ class ProductTemplate(models.Model):
 
     sku = fields.Char(string='SKU', compute='_compute_sku', store=True)
 
-    property_line_ids = fields.One2many(
-        string='Propiedades',
-        comodel_name='product.template.property.line',
-        inverse_name='product_tmpl_id',
-    )
+    #property_line_ids = fields.One2many(
+    #    string='Propiedades',
+    #    comodel_name='product.template.property.line',
+    #    inverse_name='product_tmpl_id',
+    #)
 
+    property_line_ids = fields.Many2many(
+        string='Property Line',
+        comodel_name='product.property',
+        relation='product_property_product_template_rel',
+        column1='product_property_id',
+        column2='product_template_id',
+    )
+    
     property_list = fields.One2many(string='Property List', comodel_name='product.template.property.line',
                                     inverse_name='product_tmpl_id', compute='_compute_sku', store=True)
                                     
