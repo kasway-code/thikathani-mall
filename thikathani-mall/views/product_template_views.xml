@@ -26,7 +26,8 @@
                                 </tree>
                                 
                             </field>-->
-                            <field name="property_line_ids" widget="many2many" style="column-count:2;">                                <tree string="Propiedades del producto" editable="bottom">
+                            <field name="property_line_ids" widget="many2many" style="column-count:2;" style="column-count:2;">
+                                <tree string="Propiedades del producto" editable="bottom">
                                     <field name="property_name"/>
                                     <field name="property_image" widget="image" class="oe_avatar" />
                                 </tree>
