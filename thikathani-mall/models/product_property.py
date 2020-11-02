@@ -23,11 +23,11 @@ class ProductProperty(models.Model):
     child_id = fields.One2many(
         'product.property', 'parent_id', 'Child properties')
 
-    property_line_ids = fields.One2many(
-        string='Property Line',
-        comodel_name='product.template.property.line',
-        inverse_name='property_id',
-    )
+    #property_line_ids = fields.One2many(
+    #    string='Property Line',
+    #    comodel_name='product.template.property.line',
+    #    inverse_name='property_id',
+    #)
 
     property_image = fields.Binary(string='Image')
     image_url = fields.Char(string='Imagen URL')
