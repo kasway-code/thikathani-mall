@@ -13,26 +13,15 @@ class ProductProperty(models.Model):
     _rec_name = 'complete_name'
     _order = 'complete_name'
 
-    name = fields.Char('Name', index=True, required=True)
-    complete_name = fields.Char(
-        'Complete Name', compute='_compute_complete_name',
-        store=True)
-    parent_id = fields.Many2one(
-        'product.property', 'Parent Property', index=True, ondelete='cascade')
+    name = fields.Char(string ='Name', index=True, required=True)
+    complete_name = fields.Char(string ='Complete Name', compute='_compute_complete_name',store=True)
+    parent_id = fields.Many2one(string = 'Parent Property',comodel_name ='product.property',  index=True, ondelete='cascade')
     parent_path = fields.Char(index=True)
-    child_id = fields.One2many(
-        'product.property', 'parent_id', 'Child properties')
-
-    #property_line_ids = fields.One2many(
-    #    string='Property Line',
-    #    comodel_name='product.template.property.line',
-    #    inverse_name='property_id',
-    #)
+    child_id = fields.One2many(string='Child properties',comodel_name = 'product.property', inverse_name='parent_id')
 
     property_image = fields.Binary(string='Image')
     image_url = fields.Char(string='Imagen URL')
-    odoo_image_url = fields.Char(
-        string='Odoo Imagen URL', compute='_compute_odoo_image_url', store=True)
+    odoo_image_url = fields.Char(string='Odoo Imagen URL', compute='_compute_odoo_image_url', store=True)
 
     @api.onchange('image_url')
     def _onchange_image_url(self):
@@ -67,6 +56,7 @@ class ProductProperty(models.Model):
         ).get_param('web.base.url')
         for record in self:
             record.odoo_image_url = f'{web_base_url}/web/image/product.property/{record.id}/property_image'
+
 
 '''
 class ProductPropertyLine(models.Model):
