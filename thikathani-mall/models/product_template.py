@@ -18,23 +18,26 @@ class ProductTemplate(models.Model):
 
     sku = fields.Char(string='SKU', compute='_compute_sku', store=True)
 
-    #property_line_ids = fields.One2many(
+    # property_line_ids = fields.One2many(
     #    string='Propiedades',
     #    comodel_name='product.template.property.line',
     #    inverse_name='product_tmpl_id',
-    #)
+    # )
 
     property_line_ids = fields.Many2many(
-        string='Property Line',
+        string='Property Id',
         comodel_name='product.property',
         relation='product_property_product_template_rel',
         column1='product_property_id',
         column2='product_template_id',
     )
-    
-    property_list = fields.One2many(string='Property List', comodel_name='product.template.property.line',
-                                    inverse_name='product_tmpl_id', compute='_compute_sku', store=True)
-                                    
+
+    property_list = fields.Many2many(string='Property List', comodel_name='product.property',
+                                     relation='product_property_product_template_list_rel',
+                                     column1='product_property_id',
+                                     column2='product_template_id',
+    )
+
     #property_list = fields.One2many(string='Property List')
     image_url = fields.Char(string='Imagen URL')
     image_1920 = fields.Binary(string='Image')
@@ -61,6 +64,7 @@ class ProductTemplate(models.Model):
         ).get_param('web.base.url')
         for record in self:
             record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/product.template/{record.id}/image_1920'
+
 
 '''
     @api.depends()
