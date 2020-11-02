@@ -4,7 +4,7 @@ import requests
 from odoo import models, fields, api
 
 class ProductCategory(models.Model):
-    _inherits = ['product.category', 'image.mixin']
+    _inherit = ['product.category', 'image.mixin']
     internal_code = fields.Char('Código de la categoría')
 
     #category_image = fields.Binary(string='Image')
