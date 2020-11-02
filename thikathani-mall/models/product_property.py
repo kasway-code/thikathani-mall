@@ -4,6 +4,7 @@ from odoo.osv import expression
 
 from odoo.tools import float_compare
 
+
 class ProductProperty(models.Model):
     _name = "product.property"
     _description = "Product Property"
@@ -30,7 +31,8 @@ class ProductProperty(models.Model):
 
     property_image = fields.Binary(string='Image')
     image_url = fields.Char(string='Imagen URL')
-    odoo_image_url = fields.Char(string='Odoo Imagen URL', compute='_compute_odoo_image_url',store=True)
+    odoo_image_url = fields.Char(
+        string='Odoo Imagen URL', compute='_compute_odoo_image_url', store=True)
 
     @api.onchange('image_url')
     def _onchange_image_url(self):
@@ -61,9 +63,11 @@ class ProductProperty(models.Model):
 
     @api.depends('property_image')
     def _compute_odoo_image_url(self):
-        web_base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
+        web_base_url = self.env['ir.config_parameter'].sudo(
+        ).get_param('web.base.url')
         for record in self:
             record.odoo_image_url = f'{web_base_url}/web/image/product.property/{record.id}/property_image'
+
 
 class ProductPropertyLine(models.Model):
     _name = "product.template.property.line"
@@ -77,5 +81,9 @@ class ProductPropertyLine(models.Model):
         comodel_name='product.property'
     )
 
-    property_image = fields.Binary('Imagen de la propiedad', related='property_id.property_image', readonly=True)
-    odoo_image_url = fields.Char('URL de la imagen', related='property_id.odoo_image_url', readonly=True)
+    property_name = fields.Char(
+        'Nombre de la propiedad', related='property_id.name', readonly=True)
+    property_image = fields.Binary(
+        'Imagen de la propiedad', related='property_id.property_image', readonly=True)
+    odoo_image_url = fields.Char(
+        'URL de la imagen', related='property_id.odoo_image_url', readonly=True)
