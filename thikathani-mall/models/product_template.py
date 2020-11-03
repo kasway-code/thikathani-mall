@@ -57,5 +57,5 @@ class ProductTemplate(models.Model):
     @api.depends('property_line_ids')
     def _compute_property_list(self):
         for record in self:
-            product_property_list = self.env['product.property'].read_group([record.property_line_ids], ['name','odoo_image_url'])
+            product_property_list = record.property_line_ids.read(['name','odoo_image_url'])
             record.product_property_list = str(json.dumps(product_property_list))
