@@ -54,7 +54,8 @@ class ProductTemplate(models.Model):
         for record in self:
             record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/product.template/{record.id}/image_256'
 
-    def _compute_product_property_list(self):
+    @api.depends('property_line_ids')
+    def _compute_property_list(self):
         for record in self:
             product_property_list = self.env['product.property'].read([property_line_ids], ['name','odoo_image_url'])
             record.product_property_list = str(json.dumps(product_property_list))
