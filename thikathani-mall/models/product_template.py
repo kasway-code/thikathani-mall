@@ -1,5 +1,6 @@
 import base64
 import requests
+import json
 
 from odoo import models, fields, api
 
