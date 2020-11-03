@@ -11,7 +11,7 @@
                             <h1>
                                 <field name="name"/>
                             </h1>
-                            <field name="property_image" widget="image" class="oe_avatar oe_right" />
+                            <field name="image_1920" widget="image" class="oe_avatar oe_right" />
                         </div>
                         
                         <group name="first" col="2">

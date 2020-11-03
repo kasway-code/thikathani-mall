@@ -7,22 +7,15 @@ from odoo import models, fields, api
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    descripcion_origen = fields.Text(string='Descripción y Origen')
-    descripcion_beneficios = fields.Text(string='Beneficios')
-    descripcion_usos = fields.Text(string='Modos de uso')
-    # step_ids = fields.One2many(related='template_id.step_ids', string = "Steps")
+    description_origin = fields.Text(string='Descripción y Origen')
+    description_benefits = fields.Text(string='Beneficios')
+    description_uses = fields.Text(string='Modos de uso')
 
     brand_id = fields.Many2one(string='Marca', comodel_name='product.brand')
     brand_name = fields.Char(string='Nombre de la marca',
                              related='brand_id.name', readonly=True)
 
     sku = fields.Char(string='SKU', compute='_compute_sku', store=True)
-
-    # property_line_ids = fields.One2many(
-    #    string='Propiedades',
-    #    comodel_name='product.template.property.line',
-    #    inverse_name='product_tmpl_id',
-    # )
 
     property_line_ids = fields.Many2many(
         string='Property Id',
@@ -38,17 +31,18 @@ class ProductTemplate(models.Model):
                                      column2='product_template_id',
     )
 
-    #property_list = fields.One2many(string='Property List')
     image_url = fields.Char(string='Imagen URL')
     image_1920 = fields.Binary(string='Image')
     odoo_image_url = fields.Char(
         string='Odoo Imagen URL', compute='_compute_odoo_image_url', store=True)
 
-    @api.onchange('brand_id')
+    @api.onchange('categ_id', 'brand_id')
     def _compute_sku(self):
         for record in self:
-            record['sku'] = f'{record.categ_id.internal_code}-{record.brand_id.internal_code}-record.product_id.x_consumption_rate'
-            #record.property_list = record.property_line_ids.read(['property_image'])
+            categ_code = record.categ_id.internal_code
+            subcateg_code = record.categ_id.parent_id.internal_code
+            brand_code = record.brand_id.internal_code
+            record['sku'] = f'{categ_code}-{subcateg_code}-{brand_code}-'
 
     @api.onchange('image_url')
     def _onchange_image_url(self):
@@ -58,12 +52,11 @@ class ProductTemplate(models.Model):
         else:
             self.image_1920 = False
 
-    @api.depends('image_1920')
     def _compute_odoo_image_url(self):
         web_base_url = self.env['ir.config_parameter'].sudo(
         ).get_param('web.base.url')
         for record in self:
-            record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/product.template/{record.id}/image_1920'
+            record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/product.template/{record.id}/image_256'
 
 
 '''

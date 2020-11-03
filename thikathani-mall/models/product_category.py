@@ -7,10 +7,9 @@ from odoo import models, fields, api
 class ProductCategory(models.Model):
     _inherit = 'product.category'
 
-    internal_code = fields.Char(string='Código de la categoría')
+    internal_code = fields.Char(string='Código Interno de la categoría')
 
     image_1920 = fields.Image("Image", max_width=1920, max_height=1920)
-
     image_1024 = fields.Image(
         "Image 1024", related="image_1920", max_width=1024, max_height=1024, store=True)
     image_512 = fields.Image(

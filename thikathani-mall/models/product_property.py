@@ -13,23 +13,42 @@ class ProductProperty(models.Model):
     _rec_name = 'complete_name'
     _order = 'complete_name'
 
-    name = fields.Char(string ='Name', index=True, required=True)
-    complete_name = fields.Char(string ='Complete Name', compute='_compute_complete_name',store=True)
-    parent_id = fields.Many2one(string = 'Parent Property',comodel_name ='product.property',  index=True, ondelete='cascade')
+    name = fields.Char(string='Name', index=True, required=True)
+    complete_name = fields.Char(
+        string='Complete Name', compute='_compute_complete_name', store=True)
+    parent_id = fields.Many2one(
+        string='Parent Property', comodel_name='product.property',  index=True, ondelete='cascade')
     parent_path = fields.Char(index=True)
-    child_id = fields.One2many(string='Child properties',comodel_name = 'product.property', inverse_name='parent_id')
+    child_id = fields.One2many(
+        string='Child properties', comodel_name='product.property', inverse_name='parent_id')
 
-    property_image = fields.Binary(string='Image')
+    image_1920 = fields.Image("Image", max_width=1920, max_height=1920)
+    image_1024 = fields.Image(
+        "Image 1024", related="image_1920", max_width=1024, max_height=1024, store=True)
+    image_512 = fields.Image(
+        "Image 512", related="image_1920", max_width=512, max_height=512, store=True)
+    image_256 = fields.Image(
+        "Image 256", related="image_1920", max_width=256, max_height=256, store=True)
+    image_128 = fields.Image(
+        "Image 128", related="image_1920", max_width=128, max_height=128, store=True)
+
     image_url = fields.Char(string='Imagen URL')
-    odoo_image_url = fields.Char(string='Odoo Imagen URL', compute='_compute_odoo_image_url', store=True)
+    odoo_image_url = fields.Char(
+        string='Odoo Imagen URL', compute='_compute_odoo_image_url')
 
     @api.onchange('image_url')
-    def _onchange_image_url(self):
+    def _onchage_image_url(self):
         if self.image_url != False and self.image_url != "":
-            self.property_image = base64.b64encode(
+            self.image_1920 = base64.b64encode(
                 requests.get(self.image_url).content)
         else:
-            self.property_image = False
+            self.image_1920 = False
+
+    def _compute_odoo_image_url(self):
+        web_base_url = self.env['ir.config_parameter'].sudo(
+        ).get_param('web.base.url')
+        for record in self:
+            record.odoo_image_url = f'{web_base_url}/web/image/{self._name}/{record.id}/image_128'
 
     @api.depends('name', 'parent_id.complete_name')
     def _compute_complete_name(self):
@@ -49,32 +68,3 @@ class ProductProperty(models.Model):
     @api.model
     def name_create(self, name):
         return self.create({'name': name}).name_get()[0]
-
-    @api.depends('property_image')
-    def _compute_odoo_image_url(self):
-        web_base_url = self.env['ir.config_parameter'].sudo(
-        ).get_param('web.base.url')
-        for record in self:
-            record.odoo_image_url = f'{web_base_url}/web/image/product.property/{record.id}/property_image'
-
-
-'''
-class ProductPropertyLine(models.Model):
-    _name = "product.template.property.line"
-    product_tmpl_id = fields.Many2one(
-        string='Producto',
-        comodel_name='product.template'
-    )
-
-    property_id = fields.Many2one(
-        string='Propiedad',
-        comodel_name='product.property'
-    )
-
-    property_name = fields.Char(
-        'Nombre de la propiedad', related='property_id.name', readonly=True)
-    property_image = fields.Binary(
-        'Imagen de la propiedad', related='property_id.property_image', readonly=True)
-    odoo_image_url = fields.Char(
-        'URL de la imagen', related='property_id.odoo_image_url', readonly=True)
-'''
