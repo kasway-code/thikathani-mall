@@ -20,7 +20,7 @@
                             <field name="property_line_ids" widget="many2many">
                                 <tree string="Propiedades del producto" editable="bottom">
                                     <field name="name"/>
-                                    <field name="property_image" widget="image" class="oe_avatar oe_left" />
+                                    <field name="image_1024" widget="image" class="oe_avatar oe_left" />
                                 </tree>
                             </field>
                         </group>
