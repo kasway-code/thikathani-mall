@@ -25,18 +25,14 @@ class ProductTemplate(models.Model):
         column2='product_template_id',
     )
 
-    property_list = fields.Many2many(string='Property List', comodel_name='product.property',
-                                     relation='product_property_product_template_list_rel',
-                                     column1='product_property_id',
-                                     column2='product_template_id',
-    )
+    product_property_list = fields.Char(
+        string='Lista de propiedades', compute='_compute_property_list')
 
     image_url = fields.Char(string='Imagen URL')
-    image_1920 = fields.Binary(string='Image')
     odoo_image_url = fields.Char(
         string='Odoo Imagen URL', compute='_compute_odoo_image_url', store=True)
 
-    @api.onchange('categ_id', 'brand_id')
+    @api.depends('categ_id', 'brand_id')
     def _compute_sku(self):
         for record in self:
             categ_code = record.categ_id.internal_code
@@ -58,13 +54,7 @@ class ProductTemplate(models.Model):
         for record in self:
             record.odoo_image_url = record.odoo_image_url = f'{web_base_url}/web/image/product.template/{record.id}/image_256'
 
-
-'''
-    @api.depends()
-    def _compute_property_list():
-        if self._model_name == "product.template":
-            for rec in record:
-                property_list = models.execute_kw(
-                    self._db, uid, self._pass, 'product.property', 'read', [rec['property_line_ids']], {'fields': ['odoo_image_url']})
-                rec['property_list'] = property_list
-'''
+    def _compute_product_property_list(self):
+        for record in self:
+            product_property_list = self.env['product.property'].read([property_line_ids], ['name','odoo_image_url'])
+            record.product_property_list = str(json.dumps(product_property_list))
