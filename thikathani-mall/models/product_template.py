@@ -34,15 +34,15 @@ class ProductTemplate(models.Model):
 
     @api.depends('categ_id', 'brand_id')
     def _compute_sku(self):
-        list_ids = self.ids
-        for i, record in enumerate(self):
+        products_list = self.env['product.template'].search_read([], ['id','categ_id','brand_id'])
+        for product in products_list:
             categ_code = record.categ_id.internal_code
             subcateg_code = record.categ_id.parent_id.internal_code
             brand_code = record.brand_id.internal_code
 
             brand_product_list = self.env['product.template'].search_read([('brand_id', '=', record.brand_id.id)], ['id'])
             try:
-                brand_product_code = f"{brand_product_list.index(list_ids[i])}"
+                brand_product_code = f"{brand_product_list.index(product.id)}"
                 for i in range(3-len(brand_product_code)):
                     brand_product_code = f'0{brand_product_code}'
             except:
