@@ -3,7 +3,6 @@ import requests
 
 from odoo import models, fields, api
 
-
 class BrandProduct(models.Model):
     _name = 'product.brand'
     name = fields.Char(string="Nombre de la marca")
