@@ -44,10 +44,10 @@ class ProductTemplate(models.Model):
             try:
                 brand_product_code = f"{brand_product_list.index(list_ids[i])}"
                 for i in range(3-len(brand_product_code)):
-                brand_product_code = f'0{brand_product_code}'
+                    brand_product_code = f'0{brand_product_code}'
             except:
                 brand_product_code = False
-                
+
             record['sku'] = f'{categ_code}-{subcateg_code}-{brand_code}-{brand_product_code}'
 
     @api.onchange('image_url')
