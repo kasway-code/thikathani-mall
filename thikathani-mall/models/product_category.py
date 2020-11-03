@@ -24,7 +24,6 @@ class ProductCategory(models.Model):
     odoo_image_url = fields.Char(
         string='Odoo Imagen URL', compute='_compute_odoo_image_url')
 
-    @api.onchange('image_url')
     def _onchage_image_url(self):
         if self.image_url != False and self.image_url != "":
             self.image_1920 = base64.b64encode(
