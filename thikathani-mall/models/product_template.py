@@ -39,7 +39,7 @@ class ProductTemplate(models.Model):
             subcateg_code = record.categ_id.parent_id.internal_code
             brand_code = record.brand_id.internal_code
 
-            brand_product_list = self.env['product.template'].search_read([('brand_id', '=', record.brand_id)], ['id'])
+            brand_product_list = self.env['product.template'].search_read([('brand_id', '=', record.brand_id.id)], ['id'])
             brand_product_code = f'{brand_product_list.index(record.id)}'
             for i in range(3-len(brand_product_code)):
                 brand_product_code = f'0{brand_product_code}'
