@@ -11,9 +11,9 @@
                 <xpath expr="//page[@name='inventory']" position="after">
                     <page name="more_info_product" string="Mas Informacion">
                         <group name="column_one_more_info_product">
-                            <field name="descripcion_origen" />
-                            <field name="descripcion_beneficios" />
-                            <field name="descripcion_usos" />
+                            <field name="description_origin" />
+                            <field name="description_benefits" />
+                            <field name="description_uses" />
                             <field name="sku" />
                         </group>
                         <group name="column_two_more_info_product">
